@@ -141,6 +141,8 @@ class ImageSlider extends JDialog implements ActionListener
 		}
 		if(e.getSource() == confirm){
 			SELECTION_FACETYPE.setBackground(Color.YELLOW);
+			l.getIcon();
+			infoImg.getText();
 			dispose();
 		}
 		if (e.getSource() == back){

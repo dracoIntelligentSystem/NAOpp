@@ -128,6 +128,7 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 
 	private void callFaceExpression(String emotion, JButton jButton) {
 		try {
+			@SuppressWarnings("unused")
 			ImageSlider imgChoise = new ImageSlider(new JFrame(), emotion, jButton);
 		} catch (HeadlessException | IOException e1) {
 			// TODO Auto-generated catch block

@@ -1,11 +1,9 @@
 package presentation;
 
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,9 +18,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private JFrame startFrame;
-	private String image;
 	private JPanel Principal, buttonPanel;
-	private JButton Images, Audio, Gesture, Action, Back, Confirm;
+	private JButton Images, Audio, Gesture, Action, Back, Confirm, clean;
+	
 	
 	public EmpaticNAO(StartFrame startFrame) {
 		this.startFrame=startFrame;
@@ -42,6 +40,8 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		Back.addActionListener(this);
 		Confirm = new JButton("Confirm");
 		Confirm.addActionListener(this);
+		clean = new JButton("Clean");
+		clean.addActionListener(this);
 		
 		Principal.add(Images);
 		Principal.add(Audio);
@@ -49,6 +49,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		Principal.add(Action);
 		buttonPanel.add(Back);
 		buttonPanel.add(Confirm);
+		buttonPanel.add(clean);
 		Principal.add(buttonPanel);
 		this.getContentPane().add(Principal);
 		this.pack();this.setVisible(true);

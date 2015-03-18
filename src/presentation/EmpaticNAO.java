@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,7 +21,10 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private static boolean abort = false;
+	private static HashMap<String, JButton> status;
+	
+	
 	private JFrame startFrame;
 	private JPanel Principal, buttonPanel;
 	private JButton Images, Audio, Gesture, Action, Back, Confirm, clean;

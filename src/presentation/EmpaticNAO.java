@@ -1,12 +1,12 @@
 package presentation;
 
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -59,6 +59,11 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Images){
 			System.out.println("Scelta: Images");
+			//ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(EmpaticNAO.this,true);
+			ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(new JFrame());
+			//choiseFace.setModal(true);
+		
+			System.out.println(";)");
 		}
 		else if (e.getSource() == Audio){
 			System.out.println("Scelta: Audio");

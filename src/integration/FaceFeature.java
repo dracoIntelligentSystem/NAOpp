@@ -4,39 +4,39 @@ import javax.swing.ImageIcon;
 
 public class FaceFeature {
 
-	private static ImageIcon choisedFaceExpr=null;
-	private static String path="";
-	private static String emotionCategory="";
+	private ImageIcon choisedFaceExpr=null;
+	private String path="";
+	private String emotionCategory="";
 	
 //	public FaceFeature() {
 //		// TODO Auto-generated constructor stub
 //	}
 	
 
-	public static String getPath() {
+	public  String getPath() {
 		return path;
 	}
 
-	public static void setPath(String path) {
-		FaceFeature.path = path;
+	public  void setPath(String path) {
+		this.path = path;
 	}
 
-	public static String getEmotionCategory() {
+	public  String getEmotionCategory() {
 		return emotionCategory;
 	}
 
-	public static void setEmotionCategory(String emotionCategory) {
-		FaceFeature.emotionCategory = emotionCategory;
+	public  void setEmotionCategory(String emotionCategory) {
+		this.emotionCategory = emotionCategory;
 	}
 
 
-	public static ImageIcon getFace() {
+	public  ImageIcon getFace() {
 		return choisedFaceExpr;
 	}
 
 
-	public static void setFace(ImageIcon choisedFaceExpr) {
-		FaceFeature.choisedFaceExpr = choisedFaceExpr;
+	public  void setFace(ImageIcon choisedFaceExpr) {
+		this.choisedFaceExpr = choisedFaceExpr;
 	}
 
 }

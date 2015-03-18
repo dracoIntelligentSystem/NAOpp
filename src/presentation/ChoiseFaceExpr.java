@@ -1,5 +1,7 @@
 package presentation;
 
+import integration.EmpaticFeatures;
+
 import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -22,12 +24,15 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 
 	private JButton disgusto, felicita, miscele, neutra, paura, rabbia, sorpresa, tristezza, confirm, abort;
 	private JPanel panel, faceExpr, button;
+	private EmpaticFeatures emotion;
+	private String choise="";
 	
 	//public ChoiseFaceExpr(JFrame jframe, boolean b)
-	public ChoiseFaceExpr(JFrame jframe)
+	public ChoiseFaceExpr(JFrame jframe, EmpaticFeatures emotion)
 	{
 		
 		super(jframe);
+		this.emotion=emotion;
 //		super(new JFrame());
 //		jframe.setEnabled(false);
 		setModal(true);
@@ -126,10 +131,10 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 		}
 	}
 
-	private void callFaceExpression(String emotion, JButton jButton) {
+	private void callFaceExpression(String emotionCat, JButton jButton) {
 		try {
 			@SuppressWarnings("unused")
-			ImageSlider imgChoise = new ImageSlider(new JFrame(), emotion, jButton);
+			ImageSlider imgChoise = new ImageSlider(new JFrame(), emotionCat, jButton, emotion);
 		} catch (HeadlessException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

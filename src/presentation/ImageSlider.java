@@ -1,5 +1,7 @@
 package presentation;
 
+import integration.EmpaticFeatures;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
@@ -20,6 +22,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import business.core.BuildEmotion;
+
 
 //class ImageSlider extends JFrame implements ActionListener
 class ImageSlider extends JDialog implements ActionListener
@@ -37,11 +41,12 @@ class ImageSlider extends JDialog implements ActionListener
 	private static int IMG_WIDTH=321;
 	private static int IMG_HEIGHT=470;
 	private JPanel Principal,slider,button;
-	private String path = "C:\\Users\\dragoSI\\git\\ImageSlider\\immagini\\";
+	private String path = "src\\integration\\immagini\\";
 	private HashMap<String, HashMap<File, ImageIcon>> immagini = new HashMap<String, HashMap<File, ImageIcon>>();
+	private EmpaticFeatures emotion;
 
 
-	public ImageSlider(JFrame jframe, String emo, JButton Selected) throws IOException
+	public ImageSlider(JFrame jframe, String emo, JButton Selected, EmpaticFeatures emotion) throws IOException
 	{
 		super(jframe);
 		this.SELECTION_FACETYPE=Selected;
@@ -141,8 +146,7 @@ class ImageSlider extends JDialog implements ActionListener
 		}
 		if(e.getSource() == confirm){
 			SELECTION_FACETYPE.setBackground(Color.YELLOW);
-			l.getIcon();
-			infoImg.getText();
+			BuildEmotion.setFaceFeature((ImageIcon)l.getIcon(), imgPath[i%size], infoImg.getText().split("-")[0]);
 			dispose();
 		}
 		if (e.getSource() == back){

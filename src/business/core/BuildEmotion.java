@@ -29,5 +29,9 @@ public class BuildEmotion {
 	public static void setGestureFeature(ImageIcon gestureImage, String path, String emotionCategory){
 		features.setGestureFeature(gestureImage, path, emotionCategory);
 	}	
+	
+	public static EmpaticFeatures getEmotion(){
+		return features;
+	}
 
 }

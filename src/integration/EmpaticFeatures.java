@@ -7,16 +7,17 @@ import javax.swing.ImageIcon;
 
 public  class EmpaticFeatures {
 
-//	private FaceFeature face;
-//	private AudioFeature audio;
-//	private ActionFeature action;
-//	private GestureFeature gesture;
+	private FaceFeature face = null;
+	private AudioFeature audio = null;
+	private ActionFeature action = null;
+	private GestureFeature gesture = null;
 	
 	
 	public void setFaceFeature(ImageIcon faceImage, String path, String emotionCategory) {
-		FaceFeature.setFace(faceImage);
-		FaceFeature.setPath(path);
-		FaceFeature.setEmotionCategory(emotionCategory);
+		face = new FaceFeature();
+		face.setFace(faceImage);
+		face.setPath(path);
+		face.setEmotionCategory(emotionCategory);
 	}
 
 

@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.aldebaran.*;
-import com.aldebaran.proxy.*;
+//import com.aldebaran.*;
+//import com.aldebaran.proxy.*;
 
 public class ConNAO extends JFrame implements ActionListener {
 

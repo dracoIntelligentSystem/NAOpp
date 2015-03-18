@@ -1,5 +1,7 @@
 package presentation;
 
+import integration.EmpaticFeatures;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import business.core.BuildEmotion;
 
 public class EmpaticNAO extends JFrame implements ActionListener {
 
@@ -20,6 +24,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	private JFrame startFrame;
 	private JPanel Principal, buttonPanel;
 	private JButton Images, Audio, Gesture, Action, Back, Confirm, clean;
+	private EmpaticFeatures emotion;
 	
 	
 	public EmpaticNAO(StartFrame startFrame) {
@@ -28,13 +33,13 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal= new JPanel(new GridLayout(5, 1));
 		buttonPanel = new JPanel(new FlowLayout());
-		Images = new JButton("Images", new ImageIcon("C:\\Users\\dragoSI\\Downloads\\eclipse\\workspace\\NAOpp\\src\\integration\\male-user-icon-clip-art.jpg"));
+		Images = new JButton("Images", new ImageIcon("src\\integration\\icon\\male-user-icon-clip-art.jpg"));
 		Images.addActionListener(this);
-		Audio = new JButton("Audio", new ImageIcon("C:\\Users\\dragoSI\\Downloads\\eclipse\\workspace\\NAOpp\\src\\integration\\voice_icon.jpg"));
+		Audio = new JButton("Audio", new ImageIcon("src\\integration\\icon\\voice_icon.jpg"));
 		Audio.addActionListener(this);
-		Gesture = new JButton("Gesture", new ImageIcon("C:\\Users\\dragoSI\\Downloads\\eclipse\\workspace\\NAOpp\\src\\integration\\body.png"));
+		Gesture = new JButton("Gesture", new ImageIcon("src\\integration\\icon\\body.png"));
 		Gesture.addActionListener(this);
-		Action = new JButton("Action", new ImageIcon("C:\\Users\\dragoSI\\Downloads\\eclipse\\workspace\\NAOpp\\src\\integration\\gloabl-action-icon.png"));
+		Action = new JButton("Action", new ImageIcon("src\\integration\\icon\\gloabl-action-icon.png"));
 		Action.addActionListener(this);
 		Back = new JButton("Back");
 		Back.addActionListener(this);
@@ -59,12 +64,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Images){
-			System.out.println("Scelta: Images");
-			//ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(EmpaticNAO.this,true);
-			ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(new JFrame());
-			//choiseFace.setModal(true);
-		
-			System.out.println(";)");
+			ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(new JFrame(), emotion);
+			emotion=BuildEmotion.getEmotion();
+			System.out.println("Espressione Facciale Acquisita");
 		}
 		else if (e.getSource() == Audio){
 			System.out.println("Scelta: Audio");

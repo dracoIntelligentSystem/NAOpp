@@ -33,5 +33,20 @@ public class BuildEmotion {
 	public static EmpaticFeatures getEmotion(){
 		return features;
 	}
+	
+	public static void cleanFaceFeature(){
+		features.cleanFace();
+	}
+	
+	public static void cleanAudioFeature(){
+		features.cleanAudio();
+	}
 
+	public static void cleanActionFeature(){
+		features.cleanAction();
+	}
+
+	public static void cleanGestureFeature(){
+		features.cleaGesture();
+	}
 }

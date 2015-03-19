@@ -2,6 +2,7 @@ package presentation;
 
 import integration.EmpaticFeatures;
 
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -15,6 +16,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import business.core.BuildEmotion;
+
 public class ChoiseFaceExpr extends JDialog implements ActionListener {
 
 	/**
@@ -22,19 +25,21 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private JButton disgusto, felicita, miscele, neutra, paura, rabbia, sorpresa, tristezza, confirm, abort;
+	private static JButton disgusto, felicita, miscele, neutra, paura, rabbia, sorpresa, tristezza, confirm, clean, back;
 	private JPanel panel, faceExpr, button;
 	private EmpaticFeatures emotion;
-	private String choise="";
+	private int featureType;
+	private JButton featureButton;
 	
 	//public ChoiseFaceExpr(JFrame jframe, boolean b)
-	public ChoiseFaceExpr(JFrame jframe, EmpaticFeatures emotion)
+	public ChoiseFaceExpr(JFrame jframe, EmpaticFeatures emotion, JButton featureButton, int featureType)
 	{
 		
 		super(jframe);
 		this.emotion=emotion;
-//		super(new JFrame());
-//		jframe.setEnabled(false);
+		this.featureButton=featureButton;
+		this.featureType=featureType;
+		setTitle(this.featureButton.getText() + " Emotion Selection");
 		setModal(true);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setVisible(true);
@@ -52,7 +57,8 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 		sorpresa = new JButton("SORPRESA");
 		tristezza = new JButton("TRISTEZZA"); 
 		confirm = new JButton("CONFIRM"); 
-		abort = new JButton("ABORT");
+		back = new JButton("BACK");
+		clean = new JButton("CLEAN");
 		
 		faceExpr.add(disgusto);
 		faceExpr.add(felicita);
@@ -64,7 +70,8 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 		faceExpr.add(tristezza);
 		
 		button.add(confirm);
-		button.add(abort);
+		button.add(clean);
+		button.add(back);
 		
 		disgusto.addActionListener(this);
 		felicita.addActionListener(this);
@@ -75,7 +82,8 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 		sorpresa.addActionListener(this);
 		tristezza.addActionListener(this); 
 		confirm.addActionListener(this); 
-		abort.addActionListener(this);
+		clean.addActionListener(this);
+		back.addActionListener(this);
 		
 		panel.add(faceExpr);
 		panel.add(button);
@@ -91,44 +99,89 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == disgusto)
 		{
-			callFaceExpression("disgusto", (JButton)e.getSource());
+			choiseFeatureSelection("disgusto", (JButton)e.getSource());
 		}
 		else if (e.getSource()== felicita)
 		{
-			callFaceExpression("felicita", (JButton)e.getSource());
+			choiseFeatureSelection("felicita", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == miscele)
 		{
-			callFaceExpression("miscele", (JButton)e.getSource());
+			choiseFeatureSelection("miscele", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == neutra)
 		{
-			callFaceExpression("neutra", (JButton)e.getSource());
+			choiseFeatureSelection("neutra", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == paura)
 		{
-			callFaceExpression("paura", (JButton)e.getSource());
+			choiseFeatureSelection("paura", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == rabbia)
 		{
-			callFaceExpression("rabbia", (JButton)e.getSource());
+			choiseFeatureSelection("rabbia", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == sorpresa)
 		{
-			callFaceExpression("sorpresa", (JButton)e.getSource());
+			choiseFeatureSelection("sorpresa", (JButton)e.getSource());
 		}
 		else if ( e.getSource() == tristezza)
 		{
-			callFaceExpression("tristezza", (JButton)e.getSource());
+			choiseFeatureSelection("tristezza", (JButton)e.getSource());
 		}
 		else if (e.getSource() == confirm)
 		{
-			
+			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
+			dispose();
 		}
-		else if (e.getSource() == abort) 
+		else if (e.getSource() == clean) 
+		{
+			featureClean();
+			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "del");
+			dispose();
+		}
+		else if (e.getSource() == back)
 		{
 			dispose();
 		}
+	}
+
+	private void featureClean() {
+		switch (featureType) {
+		case 0: //FACE EXPRESSION IMAGES
+			BuildEmotion.cleanFaceFeature();
+			break;
+		case 1://AUDIO VOICE
+			BuildEmotion.cleanAudioFeature();
+			break;
+		case 2://ACTION 
+			BuildEmotion.cleanActionFeature();
+			break;
+		case 3://GESTURE
+			BuildEmotion.cleanGestureFeature();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	private void choiseFeatureSelection(String emotionCategory, JButton source) {
+		switch (featureType) {
+		case 0://FACE EXPRESSION IMAGES
+			callFaceExpression(emotionCategory, source);
+			break;
+		case 1://AUDIO VOICE
+			break;
+		case 2://ACTION 
+			break;
+		case 3://GESTURE
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 	private void callFaceExpression(String emotionCat, JButton jButton) {
@@ -139,6 +192,17 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}	
+	}
+
+	public static void refreshButton() {
+		disgusto.setBackground(null);
+		felicita.setBackground(null);
+		miscele.setBackground(null);
+		neutra.setBackground(null);
+		paura.setBackground(null);
+		rabbia.setBackground(null);
+		sorpresa.setBackground(null);
+		tristezza.setBackground(null);
 	}
 
 }

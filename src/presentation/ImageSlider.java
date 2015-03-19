@@ -43,9 +43,6 @@ class ImageSlider extends JDialog implements ActionListener
 	private JPanel Principal,slider,button;
 	private String path = "src\\integration\\immagini\\";
 	private HashMap<String, HashMap<File, ImageIcon>> immagini = new HashMap<String, HashMap<File, ImageIcon>>();
-	private EmpaticFeatures emotion;
-
-
 	public ImageSlider(JFrame jframe, String emo, JButton Selected, EmpaticFeatures emotion) throws IOException
 	{
 		super(jframe);
@@ -145,6 +142,7 @@ class ImageSlider extends JDialog implements ActionListener
 			l.setIcon(img[i]);
 		}
 		if(e.getSource() == confirm){
+			ChoiseFaceExpr.refreshButton();
 			SELECTION_FACETYPE.setBackground(Color.YELLOW);
 			BuildEmotion.setFaceFeature((ImageIcon)l.getIcon(), imgPath[i%size], infoImg.getText().split("-")[0]);
 			dispose();

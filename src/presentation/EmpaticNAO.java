@@ -22,7 +22,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static boolean abort = false;
-	private static HashMap<String, JButton> status;
+	private static HashMap<String, ChoiseFaceExpr> status = new HashMap<String, ChoiseFaceExpr>();
 	
 	
 	private JFrame startFrame;
@@ -67,18 +67,28 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == Images){
-			ChoiseFaceExpr choiseFace = new ChoiseFaceExpr(new JFrame(), emotion);
+		if (e.getSource() == Images){ //feature type 0
+			ChoiseFaceExpr choiseFace=null;
+			if(status.get("images")==null)
+				{
+				choiseFace = new ChoiseFaceExpr(new JFrame(), emotion, (JButton)e.getSource(), 0);
+				}
+			else {
+				choiseFace=status.get("images");
+				choiseFace.setVisible(true);
+			}
+			//new ChoiseFaceExpr(new JFrame(), emotion, (JButton)e.getSource(), 0);
 			emotion=BuildEmotion.getEmotion();
-			System.out.println("Espressione Facciale Acquisita");
+			if(!abort)
+				System.out.println("Espressione Facciale Acquisita");
 		}
-		else if (e.getSource() == Audio){
+		else if (e.getSource() == Audio){//feature type 1
 			System.out.println("Scelta: Audio");
 		}
-		else if (e.getSource() == Gesture){
+		else if (e.getSource() == Gesture){//feature type 2
 			System.out.println("Scelta: Gesture");
 		}
-		else if (e.getSource() == Action){
+		else if (e.getSource() == Action){//feature type 3
 			System.out.println("Scelta: Action");
 		}
 		else if (e.getSource() == Back){
@@ -91,6 +101,20 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		}
 			
 
+	}
+	
+	public static void upgradeStatus(String feature, ChoiseFaceExpr choiseFaceExpr, String operationStatus){
+		if(operationStatus.equals("put"))
+		{
+			status.put(feature, choiseFaceExpr);
+			abort=false;
+		}
+		else if (operationStatus.equals("del"))
+		{
+			status.remove(feature);
+			abort=true;
+		}
+			
 	}
 
 }

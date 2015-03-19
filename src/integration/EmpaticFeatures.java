@@ -39,6 +39,22 @@ public  class EmpaticFeatures {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void cleanFace() {
+		face = null;
+	}
+
+	public void cleanAudio() {
+		audio=null;		
+	}
+
+	public void cleanAction() {
+		action=null;		
+	}
+
+	public void cleaGesture() {
+		gesture=null;		
+	}
 	
 	
 }

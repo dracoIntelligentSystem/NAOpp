@@ -37,7 +37,7 @@ public class StartFrame extends JFrame implements ActionListener {
 		
 		Principal.add(conNAO);
 		Principal.add(conEmpatic);
-		this.getContentPane().add(Principal);
+		this.getContentPane().add(Principal); 
 		this.pack();this.setVisible(true);
 	}
 	

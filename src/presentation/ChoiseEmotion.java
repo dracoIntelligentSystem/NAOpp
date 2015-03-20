@@ -60,6 +60,9 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		back = new JButton("BACK");
 		clean = new JButton("CLEAN");
 		
+		if (this.emotion!= null)
+			controlPreviousChoise(this.emotion, this.featureType);
+		
 		faceExpr.add(disgusto);
 		faceExpr.add(felicita);
 		faceExpr.add(miscele);
@@ -94,7 +97,7 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		this.setResizable(false);
 		setVisible(true);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == disgusto)
@@ -133,7 +136,9 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		{
 			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
 			featureButton.setBackground(Color.YELLOW);
-			setVisible(false);
+			//setVisible(false);
+			this.emotion=BuildEmotion.getEmotion();
+			dispose();
 		}
 		else if (e.getSource() == clean) 
 		{
@@ -213,4 +218,50 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		tristezza.setBackground(null);
 	}
 
+	private void controlPreviousChoise(EmpaticFeatures status,int PreviousType) {
+		switch (PreviousType) {
+		case 0:
+			if(status.getFace()!=null){
+				HighLight(status.getFace().getEmotionCategory());
+			}
+			break;
+		case 1:
+			if(status.getAudio()!=null){
+				HighLight(status.getAudio().getEmotionCategory());
+			}
+			break;
+		case 2:
+			if(status.getAction()!=null){
+				HighLight(status.getAction().getEmotionCategory());
+			}
+			break;
+		case 3:
+			if(status.getGesture()!=null){
+				HighLight(status.getGesture().getEmotionCategory());
+			}
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	private void HighLight(String emotionCategory) {
+		if (disgusto.getText().toLowerCase().equals(emotionCategory))
+			disgusto.setBackground(Color.YELLOW);
+		else if(felicita.getText().toLowerCase().equals(emotionCategory))
+			felicita.setBackground(Color.YELLOW);
+		else if(miscele.getText().toLowerCase().equals(emotionCategory))
+			miscele.setBackground(Color.YELLOW);
+		else if(neutra.getText().toLowerCase().equals(emotionCategory))
+			neutra.setBackground(Color.YELLOW);
+		else if(paura.getText().toLowerCase().equals(emotionCategory))
+			paura.setBackground(Color.YELLOW);
+		else if(rabbia.getText().toLowerCase().equals(emotionCategory))
+			rabbia.setBackground(Color.YELLOW);
+		else if(sorpresa.getText().toLowerCase().equals(emotionCategory))
+			sorpresa.setBackground(Color.YELLOW);
+		else if(tristezza.getText().toLowerCase().equals(emotionCategory))
+			tristezza.setBackground(Color.YELLOW);
+	}
 }

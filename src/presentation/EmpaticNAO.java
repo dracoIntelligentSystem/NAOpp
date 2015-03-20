@@ -22,7 +22,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static boolean abort = false;
-	private static HashMap<String, ChoiseEmotion> status = new HashMap<String, ChoiseEmotion>();
+	private static HashMap<String, ChoiseEmotion> status;
 	
 	
 	private JFrame startFrame;
@@ -32,6 +32,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	
 	
 	public EmpaticNAO(StartFrame startFrame) {
+		status = new HashMap<String, ChoiseEmotion>();
 		this.startFrame=startFrame;
 		this.setTitle("NAO EMPATIC SOCIAL");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,33 +70,38 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Images){ //feature type 0
 			ChoiseEmotion choiseFace=null;
-			if(status.get("images")==null)
+//			if(status.get("images")==null)
 				{
 				choiseFace = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 0);
 				}
-			else {
-				choiseFace=status.get("images");
-				choiseFace.setVisible(true);
-			}
-			if(!abort)
-				System.out.println("Espressione Facciale Acquisita");
+//			else {
+//				choiseFace=status.get("images");
+//				choiseFace.setVisible(true);
+//			}
+//			if(!abort)
+				emotion=BuildEmotion.getEmotion();
+				System.out.println("LOL");
 		}
 		else if (e.getSource() == Audio){//feature type 1
 			ChoiseEmotion choiseVoice=null;
-			if(status.get("audio")==null)
+//			if(status.get("audio")==null)
 				{
 				choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
 				}
-			else {
-				choiseVoice=status.get("audio");
-				choiseVoice.setVisible(true);
-			}
+//			else {
+//				choiseVoice=status.get("audio");
+//				choiseVoice.setVisible(true);
+//			}
+			emotion=BuildEmotion.getEmotion();
+			System.out.println("Espressione Vocale Acquisita");
 		}
 		else if (e.getSource() == Gesture){//feature type 2
 			System.out.println("Scelta: Gesture");
+			emotion=BuildEmotion.getEmotion();
 		}
 		else if (e.getSource() == Action){//feature type 3
 			System.out.println("Scelta: Action");
+			emotion=BuildEmotion.getEmotion();
 		}
 		else if (e.getSource() == Back){
 			System.out.println("Nessuna Scelta fatta, schermata principale");
@@ -103,8 +109,16 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			this.dispose();
 		}
 		else if (e.getSource() == Confirm){
-			emotion=BuildEmotion.getEmotion();
+			//emotion=BuildEmotion.getEmotion();
 			System.out.println("Scelta Confermata");
+		}
+		else if (e.getSource() == clean){
+			BuildEmotion.cleanEmotion();
+			Images.setBackground(null);
+			Audio.setBackground(null); 
+			Gesture.setBackground(null); 
+			Action.setBackground(null);
+			
 		}
 			
 

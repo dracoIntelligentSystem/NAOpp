@@ -49,4 +49,15 @@ public class BuildEmotion {
 	public static void cleanGestureFeature(){
 		features.cleaGesture();
 	}
+	
+	public static void cleanEmotion(){
+		if(features!=null){
+			cleanActionFeature();
+			cleanAudioFeature();
+			cleanFaceFeature();
+			cleanGestureFeature();
+			features=null;
+		}
+	}
+	
 }

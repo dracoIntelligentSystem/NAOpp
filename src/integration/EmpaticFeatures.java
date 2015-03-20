@@ -57,6 +57,18 @@ public  class EmpaticFeatures {
 	public void cleaGesture() {
 		gesture=null;		
 	}
-	
-	
+
+
+	public FaceFeature getFace(){
+		return face;
+	}
+	public AudioFeature getAudio(){
+		return audio;
+	}
+	public ActionFeature getAction(){
+		return action;
+	}
+	public GestureFeature getGesture(){
+		return gesture;
+	}
 }

@@ -110,7 +110,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		}
 		else if (e.getSource() == Confirm){
 			//emotion=BuildEmotion.getEmotion();
-			System.out.println("Scelta Confermata");
+			System.out.println("Face: " + emotion.getFace().getEmotionCategory());
+			System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
+			System.out.println();
 		}
 		else if (e.getSource() == clean){
 			BuildEmotion.cleanEmotion();

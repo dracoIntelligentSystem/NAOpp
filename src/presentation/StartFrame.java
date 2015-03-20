@@ -28,9 +28,9 @@ public class StartFrame extends JFrame implements ActionListener {
 		this.setTitle("NAOpp");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//ImageIcon icon = new ImageIcon("C:\\Users\\dragoSI\\Downloads\\eclipse\\workspace\\NAOpp\\src\\integration\\nao-icon.jpg");
-		ImageIcon icon = new ImageIcon("src\\integration\\icon\\nao-icon.jpg");
+		ImageIcon icon = new ImageIcon("icon\\nao-icon.jpg");
 		conNAO = new JButton("NAO CONNECTION", icon );
-		conEmpatic = new JButton("NAO EMPATIC", new ImageIcon("src\\integration\\icon\\empathy-3.png"));
+		conEmpatic = new JButton("NAO EMPATIC", new ImageIcon("icon\\empathy-3.png"));
 		
 		conNAO.addActionListener(this);
 		conEmpatic.addActionListener(this);

@@ -22,8 +22,10 @@ public  class EmpaticFeatures {
 
 
 	public void setAudioFeature(File audio2, String path, String emotionCategory) {
-		// TODO Auto-generated method stub
-		
+		audio = new AudioFeature();
+		audio.setAudio(audio2);
+		audio.setPath(path);
+		audio.setEmotionCategory(emotionCategory);
 	}
 
 

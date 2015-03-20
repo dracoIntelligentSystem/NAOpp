@@ -22,7 +22,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static boolean abort = false;
-	private static HashMap<String, ChoiseFaceExpr> status = new HashMap<String, ChoiseFaceExpr>();
+	private static HashMap<String, ChoiseEmotion> status = new HashMap<String, ChoiseEmotion>();
 	
 	
 	private JFrame startFrame;
@@ -37,13 +37,13 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal= new JPanel(new GridLayout(5, 1));
 		buttonPanel = new JPanel(new FlowLayout());
-		Images = new JButton("Images", new ImageIcon("src\\integration\\icon\\male-user-icon-clip-art.jpg"));
+		Images = new JButton("Images", new ImageIcon("icon\\male-user-icon-clip-art.jpg"));
 		Images.addActionListener(this);
-		Audio = new JButton("Audio", new ImageIcon("src\\integration\\icon\\voice_icon.jpg"));
+		Audio = new JButton("Audio", new ImageIcon("icon\\voice_icon.jpg"));
 		Audio.addActionListener(this);
-		Gesture = new JButton("Gesture", new ImageIcon("src\\integration\\icon\\body.png"));
+		Gesture = new JButton("Gesture", new ImageIcon("icon\\body.png"));
 		Gesture.addActionListener(this);
-		Action = new JButton("Action", new ImageIcon("src\\integration\\icon\\gloabl-action-icon.png"));
+		Action = new JButton("Action", new ImageIcon("icon\\gloabl-action-icon.png"));
 		Action.addActionListener(this);
 		Back = new JButton("Back");
 		Back.addActionListener(this);
@@ -68,22 +68,28 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Images){ //feature type 0
-			ChoiseFaceExpr choiseFace=null;
+			ChoiseEmotion choiseFace=null;
 			if(status.get("images")==null)
 				{
-				choiseFace = new ChoiseFaceExpr(new JFrame(), emotion, (JButton)e.getSource(), 0);
+				choiseFace = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 0);
 				}
 			else {
 				choiseFace=status.get("images");
 				choiseFace.setVisible(true);
 			}
-			//new ChoiseFaceExpr(new JFrame(), emotion, (JButton)e.getSource(), 0);
-			emotion=BuildEmotion.getEmotion();
 			if(!abort)
 				System.out.println("Espressione Facciale Acquisita");
 		}
 		else if (e.getSource() == Audio){//feature type 1
-			System.out.println("Scelta: Audio");
+			ChoiseEmotion choiseVoice=null;
+			if(status.get("audio")==null)
+				{
+				choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
+				}
+			else {
+				choiseVoice=status.get("audio");
+				choiseVoice.setVisible(true);
+			}
 		}
 		else if (e.getSource() == Gesture){//feature type 2
 			System.out.println("Scelta: Gesture");
@@ -97,13 +103,14 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			this.dispose();
 		}
 		else if (e.getSource() == Confirm){
+			emotion=BuildEmotion.getEmotion();
 			System.out.println("Scelta Confermata");
 		}
 			
 
 	}
 	
-	public static void upgradeStatus(String feature, ChoiseFaceExpr choiseFaceExpr, String operationStatus){
+	public static void upgradeStatus(String feature, ChoiseEmotion choiseFaceExpr, String operationStatus){
 		if(operationStatus.equals("put"))
 		{
 			status.put(feature, choiseFaceExpr);

@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 import business.core.BuildEmotion;
 
-public class ChoiseFaceExpr extends JDialog implements ActionListener {
+public class ChoiseEmotion extends JDialog implements ActionListener {
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 	private JButton featureButton;
 	
 	//public ChoiseFaceExpr(JFrame jframe, boolean b)
-	public ChoiseFaceExpr(JFrame jframe, EmpaticFeatures emotion, JButton featureButton, int featureType)
+	public ChoiseEmotion(JFrame jframe, EmpaticFeatures emotion, JButton featureButton, int featureType)
 	{
 		
 		super(jframe);
@@ -132,12 +132,14 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 		else if (e.getSource() == confirm)
 		{
 			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
-			dispose();
+			featureButton.setBackground(Color.YELLOW);
+			setVisible(false);
 		}
 		else if (e.getSource() == clean) 
 		{
 			featureClean();
 			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "del");
+			featureButton.setBackground(null);
 			dispose();
 		}
 		else if (e.getSource() == back)
@@ -172,6 +174,7 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 			callFaceExpression(emotionCategory, source);
 			break;
 		case 1://AUDIO VOICE
+			callAudioExpression(emotionCategory, source);
 			break;
 		case 2://ACTION 
 			break;
@@ -182,6 +185,11 @@ public class ChoiseFaceExpr extends JDialog implements ActionListener {
 			break;
 		}
 		
+	}
+
+	private void callAudioExpression(String emotionCategory, JButton source) {
+		@SuppressWarnings("unused")
+		VoiceChoise voiseChoise = new VoiceChoise(new JFrame(), emotionCategory, source);
 	}
 
 	private void callFaceExpression(String emotionCat, JButton jButton) {

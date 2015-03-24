@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/vlcj-3.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/jna-3.5.2.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/platform-3.5.2.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/slf4j-api-1.7.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dragoSI/Downloads/vlcj-3.6.0/vlcj-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dragoSI/Downloads/vlcj-3.6.0/jna-3.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dragoSI/Downloads/vlcj-3.6.0/platform-3.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dragoSI/Downloads/vlcj-3.6.0/slf4j-api-1.7.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

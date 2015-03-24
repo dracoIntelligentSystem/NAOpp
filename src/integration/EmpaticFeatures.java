@@ -29,17 +29,15 @@ public  class EmpaticFeatures {
 	}
 
 
-	public void setActionFeature(ImageIcon actionImage, String path,
-			String emotionCategory) {
+	public void setActionFeature(ImageIcon actionImage, String path, String emotionCategory) {
+		action = new ActionFeature();
 		// TODO Auto-generated method stub
-		
 	}
 
 
 	public void setGestureFeature(ImageIcon gestureImage, String path,
 			String emotionCategory) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	public void cleanFace() {

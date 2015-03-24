@@ -7,6 +7,7 @@ public class ActionFeature {
 	private static String path="";
 	private static String emotionCategory="";
 	
+	
 //	public FaceFeature() {
 //		// TODO Auto-generated constructor stub
 //	}
@@ -20,7 +21,7 @@ public class ActionFeature {
 		ActionFeature.path = path;
 	}
 
-	public static String getEmotionCategory() {
+	public String getEmotionCategory() {
 		return emotionCategory;
 	}
 

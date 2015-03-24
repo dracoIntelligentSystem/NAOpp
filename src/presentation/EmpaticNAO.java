@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import business.core.BuildEmotion;
+import business.core.NAORequest;
 
 public class EmpaticNAO extends JFrame implements ActionListener {
 
@@ -112,7 +113,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			//emotion=BuildEmotion.getEmotion();
 			System.out.println("Face: " + emotion.getFace().getEmotionCategory());
 			System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
-			System.out.println();
+			//System.out.println(NAORequest.send2NAO(BuildEmotion.getEmotion()));
+			NAORequest.send2NAO(BuildEmotion.getEmotion());
+			
 		}
 		else if (e.getSource() == clean){
 			BuildEmotion.cleanEmotion();

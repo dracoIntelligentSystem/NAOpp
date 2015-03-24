@@ -6,7 +6,8 @@ public class AudioFeature {
 	private File audio=null;
 	private String path=null;
 	private String emotionCategory=null;
-	
+	private static String Arousal = "";
+	private static String Valence = "";
 //	public AudioFeature() {
 //		// TODO Auto-generated constructor stub
 //	}
@@ -36,6 +37,22 @@ public class AudioFeature {
 
 	public void setAudio(File audio) {
 		this.audio = audio;
+	}
+
+	public String getArousal() {
+		return Arousal;
+	}
+
+	public void setArousal(String arousal) {
+		Arousal = arousal;
+	}
+
+	public String getValence() {
+		return Valence;
+	}
+
+	public void setValence(String valence) {
+		Valence = valence;
 	}
 
 

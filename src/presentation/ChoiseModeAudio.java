@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import integration.EmpaticFeatures;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -28,7 +29,8 @@ public class ChoiseModeAudio extends JDialog implements ActionListener{
 		setModal(true);
 		SelectVoice=new JButton("Select track", new ImageIcon("icon\\clicked.png"));
 		recordVoice= new JButton("Record track", new ImageIcon("icon\\mic.jpg"));
-		principal= new JPanel(new GridLayout(2,1));
+		principal= new JPanel();
+		principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
 		choice = new JPanel(new GridLayout(1,2));
 		buttons= new JPanel(new FlowLayout());
 		SelectVoice.addActionListener(this);

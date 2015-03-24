@@ -22,7 +22,6 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static boolean abort = false;
 	private static HashMap<String, ChoiseEmotion> status;
 	
 	
@@ -86,12 +85,13 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		else if (e.getSource() == Audio){//feature type 1
 			ChoiseModeAudio mode = new ChoiseModeAudio(new JFrame());
 			ChoiseEmotion choiseVoice=null;
+			VoiceRecorder voiceRec = null;
 			switch (mode.getChoise()) {
 			case 1:
 				choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
 				break;
 			case 2:
-				
+				voiceRec = new VoiceRecorder(new JFrame(), emotion, (JButton)e.getSource(), 1);
 				break;
 			default:
 				break;
@@ -142,12 +142,10 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		if(operationStatus.equals("put"))
 		{
 			status.put(feature, choiseFaceExpr);
-			abort=false;
 		}
 		else if (operationStatus.equals("del"))
 		{
 			status.remove(feature);
-			abort=true;
 		}
 			
 	}

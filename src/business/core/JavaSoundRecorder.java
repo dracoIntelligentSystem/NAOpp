@@ -1,21 +1,24 @@
 package business.core;
 import javax.sound.sampled.*;
+
 import java.io.*;
 
 
 public class JavaSoundRecorder {
 	// record duration, in milliseconds
-	static final long RECORD_TIME = 6000;	// 1 minute
-
+//	static final long RECORD_TIME = 6000;	// 1 minute
 	// path of the wav file
 	File wavFile;
-
 	// format of audio file
 	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
-
 	// the line from which audio data is captured
 	TargetDataLine line;
 
+	private String path;
+	public JavaSoundRecorder(String path) {
+		this.path=path;
+	}
+	
 	/**
 	 * Defines an audio format
 	 */
@@ -33,13 +36,13 @@ public class JavaSoundRecorder {
 	/**
 	 * Captures the sound and record into a WAV file
 	 */
-	void start() {
+	public void start() {
 		try {
 			AudioFormat format = getAudioFormat();
 			DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 
 			
-			wavFile = new File("file_audio/emozione/RecordAudio_" + System.currentTimeMillis() + ".wav");
+			wavFile = new File(path+"RecordAudio_" + System.currentTimeMillis() + ".wav");
 			if(!wavFile.getParentFile().exists())
 			{
 				wavFile.getParentFile().mkdirs();
@@ -74,34 +77,15 @@ public class JavaSoundRecorder {
 	/**
 	 * Closes the target data line to finish capturing and recording
 	 */
-	void finish() {
+	public void finish() {
 		line.stop();
 		line.close();
 		System.out.println("Finished");
 	}
 
-	/**
-	 * Entry to run the program
-	 */
-	public static void main(String[] args) {
-		final JavaSoundRecorder recorder = new JavaSoundRecorder();
 
-		// creates a new thread that waits for a specified
-		// of time before stopping
-		Thread stopper = new Thread(new Runnable() {
-			public void run() {
-				try {
-					Thread.sleep(RECORD_TIME);
-				} catch (InterruptedException ex) {
-					ex.printStackTrace();
-				}
-				recorder.finish();
-			}
-		});
-
-		stopper.start();
-
+//		recorder.finish();
 		// start recording
-		recorder.start();
-	}
+//		recorder.start();
+	
 }

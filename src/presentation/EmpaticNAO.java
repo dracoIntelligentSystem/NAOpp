@@ -84,10 +84,21 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 				System.out.println("LOL");
 		}
 		else if (e.getSource() == Audio){//feature type 1
+			ChoiseModeAudio mode = new ChoiseModeAudio(new JFrame());
 			ChoiseEmotion choiseVoice=null;
+			switch (mode.getChoise()) {
+			case 1:
+				choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
+				break;
+			case 2:
+				
+				break;
+			default:
+				break;
+			}
 //			if(status.get("audio")==null)
 				{
-				choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
+				//choiseVoice = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 1);
 				}
 //			else {
 //				choiseVoice=status.get("audio");
@@ -125,8 +136,6 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			Action.setBackground(null);
 			
 		}
-			
-
 	}
 	
 	public static void upgradeStatus(String feature, ChoiseEmotion choiseFaceExpr, String operationStatus){

@@ -82,20 +82,22 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 		setVisible(true);
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == confirm){
 			System.out.println(ssc.getVoiceRec().getAbsolutePath());
 			//TO-DO REQUEST FOR TO GET AROUSAL AND VALENCE FROM WEBSERVICE
+			/*
+			 * String arousal = TOMCAT(FILE);
+			 * String valence = TOMCAT(FILE);
+			 * BuildEmotion.setAudioFeature(arousal,valence);
+			 */
+			dispose();
 			source.setBackground(Color.yellow);
 		}
 		else if (e.getSource() == back){
 			dispose();
 		}
-		
-
 	}
 
 }

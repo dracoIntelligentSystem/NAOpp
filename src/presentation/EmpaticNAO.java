@@ -79,8 +79,8 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 //				choiseFace.setVisible(true);
 //			}
 //			if(!abort)
-				emotion=BuildEmotion.getEmotion();
-				System.out.println("LOL");
+				//emotion=BuildEmotion.getEmotion();
+				//System.out.println("LOL");
 		}
 		else if (e.getSource() == Audio){//feature type 1
 			ChoiseModeAudio mode = new ChoiseModeAudio(new JFrame());
@@ -104,8 +104,8 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 //				choiseVoice=status.get("audio");
 //				choiseVoice.setVisible(true);
 //			}
-			emotion=BuildEmotion.getEmotion();
-			System.out.println("Espressione Vocale Acquisita");
+			//emotion=BuildEmotion.getEmotion();
+			//System.out.println("Espressione Vocale Acquisita");
 		}
 		else if (e.getSource() == Gesture){//feature type 2
 			System.out.println("Scelta: Gesture");
@@ -121,9 +121,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			this.dispose();
 		}
 		else if (e.getSource() == Confirm){
-			//emotion=BuildEmotion.getEmotion();
-			System.out.println("Face: " + emotion.getFace().getEmotionCategory());
-			System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
+			emotion=BuildEmotion.getEmotion();
+			//System.out.println("Face: " + emotion.getFace().getEmotionCategory());
+			//System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
 			//System.out.println(NAORequest.send2NAO(BuildEmotion.getEmotion()));
 			NAORequest.send2NAO(BuildEmotion.getEmotion());
 			

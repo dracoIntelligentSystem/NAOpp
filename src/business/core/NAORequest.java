@@ -41,11 +41,7 @@ public class NAORequest {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-
-		
-		
+		}		
 	}
 
 	private static String buildParameterString(EmpaticFeatures emotion) {

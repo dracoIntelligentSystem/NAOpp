@@ -145,6 +145,7 @@ class ImageSlider extends JDialog implements ActionListener
 			ChoiseEmotion.refreshButton();
 			SELECTION_FACETYPE.setBackground(Color.YELLOW);
 			BuildEmotion.setFaceFeature((ImageIcon)l.getIcon(), imgPath[i%size], infoImg.getText().split("-")[0]);
+			System.out.println("Face Expression aquired!");
 			dispose();
 		}
 		if (e.getSource() == back){

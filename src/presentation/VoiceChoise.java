@@ -114,6 +114,7 @@ public class VoiceChoise extends JDialog implements ActionListener {
 			SELECTION_VOICETYPE.setBackground(Color.YELLOW);
 			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 5).toString()),
 					myTable.getValueAt(myTable.getSelectedRow(), 5).toString(), this.Emo);
+			System.out.println("Vocal expression, acquired!!");
 			dispose();
 		}
 		else if(e.getSource() == back){

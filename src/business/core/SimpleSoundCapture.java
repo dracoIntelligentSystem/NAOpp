@@ -44,7 +44,8 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
  
     public SimpleSoundCapture() {
         setLayout(new BorderLayout());
-        EmptyBorder eb = new EmptyBorder(5, 5, 5, 5);
+        @SuppressWarnings("unused")
+		EmptyBorder eb = new EmptyBorder(5, 5, 5, 5);
         SoftBevelBorder sbb = new SoftBevelBorder(SoftBevelBorder.LOWERED);
         setBorder(new EmptyBorder(5, 5, 5, 5));
  
@@ -102,9 +103,10 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
                 capture.start();
                 playB.setEnabled(false);
                 captB.setText("Stop");
-            } else {
+            } else if (captB.getText().startsWith("Stop")){
                 capture.stop();
                 playB.setEnabled(true);
+                captB.setText("Record");
             }
  
         }
@@ -161,7 +163,8 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
             AudioFormat.Encoding encoding = AudioFormat.Encoding.PCM_SIGNED;
             float rate = 44100.0f;
             int channels = 2;
-            int frameSize = 4;
+            @SuppressWarnings("unused")
+			int frameSize = 4;
             int sampleSize = 16;
             boolean bigEndian = true;
  
@@ -272,7 +275,8 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
             AudioFormat.Encoding encoding = AudioFormat.Encoding.PCM_SIGNED;
             float rate = 44100.0f;
             int channels = 2;
-            int frameSize = 4;
+            @SuppressWarnings("unused")
+			int frameSize = 4;
             int sampleSize = 16;
             boolean bigEndian = true;
  

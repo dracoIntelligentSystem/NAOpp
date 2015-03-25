@@ -2,6 +2,8 @@ package presentation;
 
 import integration.EmpaticFeatures;
 
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import business.core.JavaSoundRecorder;
+import business.core.SimpleSoundCapture;
 
 public class VoiceRecorder extends JDialog implements ActionListener {
 
@@ -28,7 +31,7 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 	private JPanel principal, timer, console, buttons;
 	private JLabel time;
 	private JavaSoundRecorder recorder;
-	
+	private SimpleSoundCapture ssc;
 	
 
 	public VoiceRecorder(JFrame jFrame, EmpaticFeatures emotion, JButton source, int featureType) {
@@ -39,7 +42,9 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Voice/audio recordeer");
 		setModal(true);
-		recorder = new JavaSoundRecorder("recordVoice//");
+		//recorder = new JavaSoundRecorder("recordVoice//");
+        ssc = new SimpleSoundCapture();
+        ssc.open();
 		
 		principal=new JPanel();
 		principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
@@ -52,13 +57,13 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 		
 		timer.add(time);
 		
-		rec= new JButton(new ImageIcon("icon//rec.png"));
-		rec.addActionListener(this);
-		console.add(rec);
-		
-		stop= new JButton(new ImageIcon("icon//stop.png"));
-		stop.addActionListener(this);
-		console.add(stop);
+//		rec= new JButton(new ImageIcon("icon//rec.png"));
+//		rec.addActionListener(this);
+//		console.add(rec);
+//		
+//		stop= new JButton(new ImageIcon("icon//stop.png"));
+//		stop.addActionListener(this);
+		console.add(ssc);
 		
 		back= new JButton("back");
 		back.addActionListener(this);
@@ -81,14 +86,15 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == rec){
-			rec.setEnabled(false);
-			recorder.start();
+		if (e.getSource() == confirm){
+			System.out.println(ssc.getVoiceRec().getAbsolutePath());
+			//TO-DO REQUEST FOR TO GET AROUSAL AND VALENCE FROM WEBSERVICE
+			source.setBackground(Color.yellow);
 		}
-		else if (e.getSource() == stop){
-			rec.setEnabled(true);
-			recorder.finish();
+		else if (e.getSource() == back){
+			dispose();
 		}
+		
 
 	}
 

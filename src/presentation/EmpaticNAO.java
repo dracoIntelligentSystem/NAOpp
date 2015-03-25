@@ -125,8 +125,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			//System.out.println("Face: " + emotion.getFace().getEmotionCategory());
 			//System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
 			//System.out.println(NAORequest.send2NAO(BuildEmotion.getEmotion()));
-			NAORequest.send2NAO(BuildEmotion.getEmotion());
-			
+			NAORequest.send2NAO(BuildEmotion.getEmotion());			
 		}
 		else if (e.getSource() == clean){
 			BuildEmotion.cleanEmotion();

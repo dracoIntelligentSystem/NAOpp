@@ -41,12 +41,14 @@ class ImageSlider extends JDialog implements ActionListener
 	private static int IMG_WIDTH=321;
 	private static int IMG_HEIGHT=470;
 	private JPanel Principal,slider,button;
-	private String path = "immagini\\";
+	private String path = "immagini\\", emotionCategory="";
 	private HashMap<String, HashMap<File, ImageIcon>> immagini = new HashMap<String, HashMap<File, ImageIcon>>();
-	public ImageSlider(JFrame jframe, String emo, JButton Selected, EmpaticFeatures emotion) throws IOException
+	
+	public ImageSlider(JFrame jframe, String emo, String emo2Send, JButton Selected, EmpaticFeatures emotion) throws IOException
 	{
 		super(jframe);
 		this.SELECTION_FACETYPE=Selected;
+		this.emotionCategory=emo2Send;
 		immagini.put("test", new HashMap<File, ImageIcon>());
 		resizeImage(path+emo+"\\");
 		size=immagini.get("test").size();
@@ -119,8 +121,6 @@ class ImageSlider extends JDialog implements ActionListener
 			g.drawImage(originalImage, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);
 			g.dispose();
 			immagini.get("test").put(fileImage, new ImageIcon(resizedImage));
-			//String nomeEmo = fileImage.getName();
-
 		}
 		System.out.println();
 	}
@@ -145,6 +145,7 @@ class ImageSlider extends JDialog implements ActionListener
 			ChoiseEmotion.refreshButton();
 			SELECTION_FACETYPE.setBackground(Color.YELLOW);
 			BuildEmotion.setFaceFeature((ImageIcon)l.getIcon(), imgPath[i%size], infoImg.getText().split("-")[0]);
+			//BuildEmotion.setFaceFeature((ImageIcon)l.getIcon(), imgPath[i%size], emotionCategory);
 			System.out.println("Face Expression aquired!");
 			dispose();
 		}

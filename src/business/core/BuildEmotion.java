@@ -21,6 +21,11 @@ public class BuildEmotion {
 	public static void setAudioFeature(File audio, String path, String emotionCategory){
 		features.setAudioFeature(audio, path, emotionCategory);
 	}
+	
+//TEST	
+	public static void setAudioFeature(File audio, String path, String emotionCategory, String arousal, String valence){
+		features.setAudioFeature(audio, path, emotionCategory, arousal, valence);
+	}
 
 	public static void setActionFeature(ImageIcon actionImage, String path, String emotionCategory){
 		features.setActionFeature(actionImage, path, emotionCategory);
@@ -47,7 +52,7 @@ public class BuildEmotion {
 	}
 
 	public static void cleanGestureFeature(){
-		features.cleaGesture();
+		features.cleanGesture();
 	}
 	
 	public static void cleanEmotion(){

@@ -1,5 +1,7 @@
 package presentation;
 
+import integration.Speech;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -22,6 +24,7 @@ import javax.swing.event.ListSelectionListener;
 import table.JTableAdHooc;
 import table.MyTableModel;
 import business.core.BuildEmotion;
+import business.core.CategorizationVoiceEmotion;
 import business.core.PlayerVlc;
 
 public class VoiceChoise extends JDialog implements ActionListener {
@@ -49,6 +52,7 @@ public class VoiceChoise extends JDialog implements ActionListener {
 		this.Emo=Emo;
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//etichetta = new JLabel("Testo su evento tabella");
+//TEST	//columnNames=new String[] {"#Voice","Name","Emotion","Valence","Arousal","Duration (s)","Format","Path"};
 		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Format","Path"};
 		data = fillDataMatrix(path, this.Emo);
 		setModal(true);
@@ -114,6 +118,11 @@ public class VoiceChoise extends JDialog implements ActionListener {
 			SELECTION_VOICETYPE.setBackground(Color.YELLOW);
 			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 5).toString()),
 					myTable.getValueAt(myTable.getSelectedRow(), 5).toString(), this.Emo);
+//TEST		//			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 7).toString()),
+//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 7).toString(), 
+//TEST		//										 this.Emo, 
+//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 5).toString(),
+//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 4).toString(),);
 			System.out.println("Vocal expression, acquired!!");
 			dispose();
 		}
@@ -126,6 +135,7 @@ public class VoiceChoise extends JDialog implements ActionListener {
 	private static Object[][] fillDataMatrix(String path, String Emo) {
 		File[] samples = new File(path+Emo+"\\").listFiles();
 		Object[][] data = new Object[samples.length][columnNames.length];
+		Speech speecValues=null;
 
 		for(int row=0; row<samples.length; row++){
 			//int col=0;
@@ -138,6 +148,9 @@ public class VoiceChoise extends JDialog implements ActionListener {
 			} catch (UnsupportedAudioFileException | IOException e) {
 				data[row][3]="NOT AVAIABLE";
 			}
+			speecValues = CategorizationVoiceEmotion.getRandomSpeech(Emo);
+//TEST		//data[row][4]=speecValues.getValence();
+//TEST		//data[row][5]=speecValues.getArousal();
 			data[row][4]=dets[1];
 			data[row][5]=samples[row].getAbsolutePath();
 		}

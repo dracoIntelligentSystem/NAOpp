@@ -27,7 +27,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	
 	private JFrame startFrame;
 	private JPanel Principal, buttonPanel;
-	private JButton Images, Audio, Gesture, Action, Back, Confirm, clean;
+	private JButton Images, Audio, Gesture, Event, Back, Confirm, clean;
 	private EmpaticFeatures emotion;
 	
 	
@@ -42,10 +42,10 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		Images.addActionListener(this);
 		Audio = new JButton("Audio", new ImageIcon("icon\\voice_icon.jpg"));
 		Audio.addActionListener(this);
-		Gesture = new JButton("Gesture", new ImageIcon("icon\\body.png"));
+		Gesture = new JButton("Gesture", new ImageIcon("icon\\body.png"));Gesture.setEnabled(false);
 		Gesture.addActionListener(this);
-		Action = new JButton("Action", new ImageIcon("icon\\gloabl-action-icon.png"));
-		Action.addActionListener(this);
+		Event = new JButton("Event", new ImageIcon("icon\\gloabl-Event-icon.png"));
+		Event.addActionListener(this);
 		Back = new JButton("Back");
 		Back.addActionListener(this);
 		Confirm = new JButton("Confirm");
@@ -54,9 +54,9 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		clean.addActionListener(this);
 		
 		Principal.add(Images);
-		Principal.add(Audio);
+		Principal.add(Audio);		
+		Principal.add(Event);
 		Principal.add(Gesture);
-		Principal.add(Action);
 		buttonPanel.add(Back);
 		buttonPanel.add(Confirm);
 		buttonPanel.add(clean);
@@ -111,8 +111,8 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			System.out.println("Scelta: Gesture");
 			emotion=BuildEmotion.getEmotion();
 		}
-		else if (e.getSource() == Action){//feature type 3
-			System.out.println("Scelta: Action");
+		else if (e.getSource() == Event){//feature type 3
+			System.out.println("Scelta: Event");
 			emotion=BuildEmotion.getEmotion();
 		}
 		else if (e.getSource() == Back){
@@ -132,7 +132,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			Images.setBackground(null);
 			Audio.setBackground(null); 
 			Gesture.setBackground(null); 
-			Action.setBackground(null);
+			Event.setBackground(null);
 			
 		}
 	}

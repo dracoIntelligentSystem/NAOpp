@@ -27,6 +27,15 @@ public  class EmpaticFeatures {
 		audio.setPath(path);
 		audio.setEmotionCategory(emotionCategory);
 	}
+	
+	public void setAudioFeature(File audio2, String path, String emotionCategory, String arousal, String valence) {
+		audio = new AudioFeature();
+		audio.setAudio(audio2);
+		audio.setPath(path);
+		audio.setEmotionCategory(emotionCategory);
+		audio.setArousal(arousal);
+		audio.setValence(valence);
+	}
 
 
 	public void setActionFeature(ImageIcon actionImage, String path, String emotionCategory) {
@@ -52,7 +61,7 @@ public  class EmpaticFeatures {
 		action=null;		
 	}
 
-	public void cleaGesture() {
+	public void cleanGesture() {
 		gesture=null;		
 	}
 
@@ -69,4 +78,5 @@ public  class EmpaticFeatures {
 	public GestureFeature getGesture(){
 		return gesture;
 	}
+
 }

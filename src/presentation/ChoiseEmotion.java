@@ -48,14 +48,18 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		button = new JPanel(new FlowLayout());
 		
 		
-		disgusto = new JButton("DISGUSTO");
-		felicita = new JButton("FELICITA");
-		miscele = new JButton("MISCELE");
-		neutra = new JButton("NEUTRA");
-		paura = new JButton("PAURA");
-		rabbia = new JButton("RABBIA");
-		sorpresa = new JButton("SORPRESA");
-		tristezza = new JButton("TRISTEZZA"); 
+		disgusto = new JButton("DISGUSTO");disgusto.setName("disgust");
+		disgusto.setEnabled(false);
+		felicita = new JButton("FELICITA");felicita.setName("happy");
+		miscele = new JButton("MISCELE");miscele.setName("mixtures");
+		miscele.setEnabled(false);
+		neutra = new JButton("NEUTRA");neutra.setName("neutral");
+		paura = new JButton("PAURA");paura.setName("fear");
+		paura.setEnabled(false);
+		rabbia = new JButton("RABBIA");rabbia.setName("anger");
+		sorpresa = new JButton("SORPRESA");sorpresa.setName("surprise");
+		sorpresa.setEnabled(false);
+		tristezza = new JButton("TRISTEZZA");tristezza.setName("sad"); 
 		confirm = new JButton("CONFIRM"); 
 		back = new JButton("BACK");
 		clean = new JButton("CLEAN");
@@ -63,15 +67,15 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		if (this.emotion!= null)
 			controlPreviousChoise(this.emotion, this.featureType);
 		
-		faceExpr.add(disgusto);
-		faceExpr.add(felicita);
-		faceExpr.add(miscele);
-		faceExpr.add(paura);
-		faceExpr.add(neutra);
-		faceExpr.add(rabbia);
-		faceExpr.add(sorpresa);
 		faceExpr.add(tristezza);
-		
+		faceExpr.add(rabbia);
+		faceExpr.add(neutra);
+		faceExpr.add(felicita);
+		faceExpr.add(paura);
+		faceExpr.add(miscele);
+		faceExpr.add(sorpresa);
+		faceExpr.add(disgusto);		
+
 		button.add(confirm);
 		button.add(clean);
 		button.add(back);
@@ -102,42 +106,42 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == disgusto)
 		{
-			choiseFeatureSelection("disgusto", (JButton)e.getSource());
+			choiseFeatureSelection("disgusto", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if (e.getSource()== felicita)
 		{
-			choiseFeatureSelection("felicita", (JButton)e.getSource());
+			choiseFeatureSelection("felicita", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == miscele)
 		{
-			choiseFeatureSelection("miscele", (JButton)e.getSource());
+			choiseFeatureSelection("miscele", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == neutra)
 		{
-			choiseFeatureSelection("neutra", (JButton)e.getSource());
+			choiseFeatureSelection("neutra", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == paura)
 		{
-			choiseFeatureSelection("paura", (JButton)e.getSource());
+			choiseFeatureSelection("paura", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == rabbia)
 		{
-			choiseFeatureSelection("rabbia", (JButton)e.getSource());
+			choiseFeatureSelection("rabbia", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == sorpresa)
 		{
-			choiseFeatureSelection("sorpresa", (JButton)e.getSource());
+			choiseFeatureSelection("sorpresa", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if ( e.getSource() == tristezza)
 		{
-			choiseFeatureSelection("tristezza", (JButton)e.getSource());
+			choiseFeatureSelection("tristezza", ((JButton)e.getSource()).getName(),(JButton)e.getSource());
 		}
 		else if (e.getSource() == confirm)
 		{
 			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
 			featureButton.setBackground(Color.YELLOW);
 			//setVisible(false);
-			this.emotion=BuildEmotion.getEmotion();
+			//this.emotion=BuildEmotion.getEmotion();
 			dispose();
 		}
 		else if (e.getSource() == clean) 
@@ -173,10 +177,10 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		}
 	}
 
-	private void choiseFeatureSelection(String emotionCategory, JButton source) {
+	private void choiseFeatureSelection(String emotionCategory, String emo2Send, JButton source) {
 		switch (featureType) {
 		case 0://FACE EXPRESSION IMAGES
-			callFaceExpression(emotionCategory, source);
+			callFaceExpression(emotionCategory, emo2Send, source);
 			break;
 		case 1://AUDIO VOICE
 			callAudioExpression(emotionCategory, source);
@@ -197,10 +201,10 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		VoiceChoise voiseChoise = new VoiceChoise(new JFrame(), emotionCategory, source);
 	}
 
-	private void callFaceExpression(String emotionCat, JButton jButton) {
+	private void callFaceExpression(String emotionCat, String emo2Send, JButton jButton) {
 		try {
 			@SuppressWarnings("unused")
-			ImageSlider imgChoise = new ImageSlider(new JFrame(), emotionCat, jButton, emotion);
+			ImageSlider imgChoise = new ImageSlider(new JFrame(), emotionCat, emo2Send, jButton, emotion);
 		} catch (HeadlessException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

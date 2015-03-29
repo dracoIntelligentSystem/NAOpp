@@ -6,5 +6,8 @@
 	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/jna-3.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/vlcj-3.6.0/platform-3.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/Documents and Settings/DragoHome/Documenti/Download/slf4j-1.7.10/slf4j-simple-1.7.10.jar"/>
+	<classpathentry kind="lib" path="C:/Copy/eclipse/workspace/WebPC/org.apache.commons.io.jar"/>
+	<classpathentry kind="lib" path="C:/Copy/eclipse/workspace/WebPC/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Copy/eclipse/workspace/WebPC/ksoap2-android-assembly-2.4-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

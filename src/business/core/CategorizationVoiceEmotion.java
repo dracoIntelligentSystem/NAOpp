@@ -8,8 +8,9 @@ import java.util.HashMap;
 public class CategorizationVoiceEmotion {
 
 	private static HashMap<String, ArrayList<Speech>> speechParam = new HashMap<String, ArrayList<Speech>>();
+	private static boolean isInitialized = false;
 	
-	public CategorizationVoiceEmotion() {
+	public static void InitializeCategorizationVoiceEmotion() {
 		Speech anger = new Speech("medium", "veryneg");
 		Speech anger1 = new Speech("high", "veryneg");
 		Speech anger2 = new Speech("medium", "negative");
@@ -46,10 +47,14 @@ public class CategorizationVoiceEmotion {
 		speechParam.put("tristezza", sadList);
 		speechParam.put("felicita", happylist);
 		speechParam.put("neutra", neutralList);
+		
+		isInitialized=true;
 	}
 	
 	public static Speech getRandomSpeech(String Emotion){
-		//index numero random tra 0 e la lunghezza
+		if (!isInitialized)
+			InitializeCategorizationVoiceEmotion();
+		
 		int randomItem = (int)Math.random()*speechParam.get(Emotion).size();
 		return speechParam.get(Emotion).get(randomItem);
 	}

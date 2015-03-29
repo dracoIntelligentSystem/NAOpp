@@ -8,13 +8,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 public class NAORequest {
 	private final static String address_url = "http://bdii.cloudapp.net/NAO_services/Emotions?";
-	private static String parameter;
 	private static String operation="upload";
-
+	private static HashMap<String, String> emoAssociation = new HashMap<String, String>();
 	public static void send2NAO(EmpaticFeatures emotion) {
+		InitializeHashMap();
 		String request = address_url+ buildParameterString(emotion);
 		try {
 			URL url = new URL(request);
@@ -44,14 +45,19 @@ public class NAORequest {
 		}		
 	}
 
+	private static void InitializeHashMap() {
+		emoAssociation.put("rabbia", "anger");
+		emoAssociation.put("felicita", "happy");
+		emoAssociation.put("tristezza", "sad");
+		emoAssociation.put("neutra", "neutral");
+	}
+
 	private static String buildParameterString(EmpaticFeatures emotion) {
-		return parameter = "operation="+operation + "&"+
-					"facial_expression="+emotion.getFace().getEmotionCategory() + "&"+
-					"audio_valence=low"+ emotion.getAudio().getValence() + "&"+
-					"audio_arousal=high"+ emotion.getAudio().getArousal() + "&"+
-					"event=happy";// + emotion.getAction().getEmotionCategory();
-				
-		 
+		return "operation="+operation + "&"+
+					"facial_expression="+ emoAssociation.get(emotion.getFace().getEmotionCategory()) + "&"+
+					"audio_valence="+ emotion.getAudio().getValence() + "&"+
+					"audio_arousal="+ emotion.getAudio().getArousal() + "&"+
+					"event=happy";// + emoAssociation.get(emotion.getAction().getEmotionCategory());						 
 	}
 
 }

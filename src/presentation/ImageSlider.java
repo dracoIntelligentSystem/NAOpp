@@ -41,14 +41,13 @@ class ImageSlider extends JDialog implements ActionListener
 	private static int IMG_WIDTH=321;
 	private static int IMG_HEIGHT=470;
 	private JPanel Principal,slider,button;
-	private String path = "immagini\\", emotionCategory="";
+	private String path = "immagini\\";
 	private HashMap<String, HashMap<File, ImageIcon>> immagini = new HashMap<String, HashMap<File, ImageIcon>>();
 	
 	public ImageSlider(JFrame jframe, String emo, String emo2Send, JButton Selected, EmpaticFeatures emotion) throws IOException
 	{
 		super(jframe);
 		this.SELECTION_FACETYPE=Selected;
-		this.emotionCategory=emo2Send;
 		immagini.put("test", new HashMap<File, ImageIcon>());
 		resizeImage(path+emo+"\\");
 		size=immagini.get("test").size();

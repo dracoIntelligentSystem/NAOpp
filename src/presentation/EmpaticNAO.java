@@ -44,7 +44,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		Audio.addActionListener(this);
 		Gesture = new JButton("Gesture", new ImageIcon("icon\\body.png"));Gesture.setEnabled(false);
 		Gesture.addActionListener(this);
-		Event = new JButton("Event", new ImageIcon("icon\\gloabl-Event-icon.png"));
+		Event = new JButton("Event", new ImageIcon("icon\\gloabl-action-icon.png"));
 		Event.addActionListener(this);
 		Back = new JButton("Back");
 		Back.addActionListener(this);
@@ -66,6 +66,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Images){ //feature type 0

@@ -2,9 +2,7 @@ package table;
 
 import java.awt.Component;
 
-import javax.swing.BorderFactory;
 import javax.swing.JTable;
-import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class CustomRenderer extends DefaultTableCellRenderer {

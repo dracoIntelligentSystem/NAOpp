@@ -5,6 +5,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -61,6 +62,7 @@ public class PlayerVlc extends JPanel {
 		AudioFormat format = audioInputStream.getFormat();
 		long frames = audioInputStream.getFrameLength();
 		double durationInSeconds = (frames+0.0) / format.getFrameRate();  
-		return String.valueOf(durationInSeconds);
+		DecimalFormat df = new DecimalFormat("0.00");
+		return String.valueOf(df.format(durationInSeconds));
 	}
 }

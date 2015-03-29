@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+//import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 //import com.aldebaran.*;
@@ -28,9 +28,9 @@ public class ConNAO extends JFrame implements ActionListener {
 	private JTextField BotServer;
 	private JTextField CommProt;
 	private JTextField PORT;
-	private JTextField username_login;
-	private JPasswordField user_psw;
-	private String RamServerDB_IP="";
+//	private JTextField username_login;
+//	private JPasswordField user_psw;
+//	private String RamServerDB_IP="";
 	
 	public ConNAO(JFrame startFrame) {
 		this.startframe= startFrame;

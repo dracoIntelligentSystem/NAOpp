@@ -241,7 +241,7 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 			break;
 		case 3:
 			if(status.getGesture()!=null){
-				HighLight(status.getGesture().getEmotionCategory());
+				//HighLight(status.getGesture().getEmotionCategory());
 			}
 			break;
 		default:

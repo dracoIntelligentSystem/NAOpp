@@ -17,6 +17,7 @@ public class WebServiceVoice {
 	private String NAMESPACE = "http://android";
 	private String SOAP_ACTION = "http://android/uploadFile";
 	// NAMESPACE + method name
+	@SuppressWarnings("unused")
 	private String ip ="193.204.187.73:81";
 	private String localhost="127.0.0.1:8080";
 	final String URL = "http://"+localhost+"/VOCEWebService/services/Android";
@@ -39,6 +40,7 @@ public class WebServiceVoice {
 		
 	}
 
+	@SuppressWarnings("resource")
 	public static byte[] getBytesFromFile(File file) throws IOException {
 		InputStream is = new FileInputStream(file);
 

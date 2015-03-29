@@ -18,9 +18,9 @@ public class BuildEmotion {
 		features.setFaceFeature(faceImage, path, emotionCategory);
 	}
 
-	public static void setAudioFeature(File audio, String path, String emotionCategory){
-		features.setAudioFeature(audio, path, emotionCategory);
-	}
+//	public static void setAudioFeature(File audio, String path, String emotionCategory){
+//		features.setAudioFeature(audio, path, emotionCategory);
+//	}
 	
 //TEST	
 	public static void setAudioFeature(File audio, String path, String emotionCategory, String arousal, String valence){

@@ -3,21 +3,19 @@ package presentation;
 import integration.EmpaticFeatures;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import business.core.JavaSoundRecorder;
+//import business.core.JavaSoundRecorder;
 import business.core.SimpleSoundCapture;
 
 public class VoiceRecorder extends JDialog implements ActionListener {
@@ -26,11 +24,13 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private EmpaticFeatures emotion;
+	@SuppressWarnings("unused")
 	private JButton rec, stop, back, confirm, source;
 	private JPanel principal, timer, console, buttons;
 	private JLabel time;
-	private JavaSoundRecorder recorder;
+	//private JavaSoundRecorder recorder;
 	private SimpleSoundCapture ssc;
 	
 

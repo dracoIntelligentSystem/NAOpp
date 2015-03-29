@@ -4,6 +4,7 @@ import integration.Speech;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class CategorizationVoiceEmotion {
 
@@ -35,9 +36,9 @@ public class CategorizationVoiceEmotion {
 		neutralList.add(neutral1);
 		neutralList.add(neutral2);
 		
-		Speech happy = new Speech("low", "positie");
-		Speech happy1 = new Speech("medium", "positie");
-		Speech happy2 = new Speech("high", "positie");
+		Speech happy = new Speech("low", "positive");
+		Speech happy1 = new Speech("medium", "positive");
+		Speech happy2 = new Speech("high", "positive");
 		ArrayList<Speech> happylist = new ArrayList<Speech>();
 		happylist.add(happy);
 		happylist.add(happy1);
@@ -55,8 +56,11 @@ public class CategorizationVoiceEmotion {
 		if (!isInitialized)
 			InitializeCategorizationVoiceEmotion();
 		
-		int randomItem = (int)Math.random()*speechParam.get(Emotion).size();
-		return speechParam.get(Emotion).get(randomItem);
+		Random rand = new Random();
+		int numero=rand.nextInt(speechParam.get(Emotion).size());
+		
+		System.out.println(numero);
+		return speechParam.get(Emotion).get(numero);
 	}
 	
 }

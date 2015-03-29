@@ -1,12 +1,9 @@
 package presentation;
 
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,6 +38,7 @@ public class StartFrame extends JFrame implements ActionListener {
 		this.pack();this.setVisible(true);
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.setVisible(false);

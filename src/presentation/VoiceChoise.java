@@ -52,8 +52,8 @@ public class VoiceChoise extends JDialog implements ActionListener {
 		this.Emo=Emo;
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//etichetta = new JLabel("Testo su evento tabella");
-//TEST	//columnNames=new String[] {"#Voice","Name","Emotion","Valence","Arousal","Duration (s)","Format","Path"};
-		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Format","Path"};
+		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Valence","Arousal","Format","Path"};
+//TEST	//		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Format","Path"};
 		data = fillDataMatrix(path, this.Emo);
 		setModal(true);
 		
@@ -70,14 +70,15 @@ public class VoiceChoise extends JDialog implements ActionListener {
 			        public void valueChanged(ListSelectionEvent event) {
 			        	//APPRONTARE IL MEDIA PLAYER QUI
 			            //etichetta.setText(myTable.getValueAt(event.getLastIndex(), 5).toString());
-			        	p.play(myTable.getValueAt(myTable.getSelectedRow(), 5).toString());
+			        	//p.play(myTable.getValueAt(myTable.getSelectedRow(), 5).toString());
+			        	p.play(myTable.getValueAt(myTable.getSelectedRow(), 7).toString());
 			        }
 			    });
 				
 				myTable.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(java.awt.event.MouseEvent e) {
-						p.play(((JTableAdHooc)e.getSource()).getValueAt(myTable.getSelectedRow(), 5).toString());
+						p.play(((JTableAdHooc)e.getSource()).getValueAt(myTable.getSelectedRow(), 7).toString());
 					}
 				});
 				JScrollPane scrollPane = new JScrollPane(myTable);
@@ -116,13 +117,14 @@ public class VoiceChoise extends JDialog implements ActionListener {
 		if(e.getSource() == confirm){
 			ChoiseEmotion.refreshButton();
 			SELECTION_VOICETYPE.setBackground(Color.YELLOW);
-			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 5).toString()),
-					myTable.getValueAt(myTable.getSelectedRow(), 5).toString(), this.Emo);
-//TEST		//			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 7).toString()),
-//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 7).toString(), 
-//TEST		//										 this.Emo, 
-//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 5).toString(),
-//TEST		//										 myTable.getValueAt(myTable.getSelectedRow(), 4).toString(),);
+			//BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 5).toString()),
+				//	myTable.getValueAt(myTable.getSelectedRow(), 5).toString(), this.Emo);
+			BuildEmotion.setAudioFeature(new File(myTable.getValueAt(myTable.getSelectedRow(), 7).toString()),
+										 myTable.getValueAt(myTable.getSelectedRow(), 7).toString(), 
+										 this.Emo, 
+										 myTable.getValueAt(myTable.getSelectedRow(), 5).toString(),
+										 myTable.getValueAt(myTable.getSelectedRow(), 4).toString());
+			
 			System.out.println("Vocal expression, acquired!!");
 			dispose();
 		}
@@ -149,10 +151,12 @@ public class VoiceChoise extends JDialog implements ActionListener {
 				data[row][3]="NOT AVAIABLE";
 			}
 			speecValues = CategorizationVoiceEmotion.getRandomSpeech(Emo);
-//TEST		//data[row][4]=speecValues.getValence();
-//TEST		//data[row][5]=speecValues.getArousal();
-			data[row][4]=dets[1];
-			data[row][5]=samples[row].getAbsolutePath();
+			data[row][4]=speecValues.getValence();
+			data[row][5]=speecValues.getArousal();
+			data[row][6]=dets[1];
+			data[row][7]=samples[row].getAbsolutePath();
+//TEST		data[row][4]=dets[1];
+//TEST		data[row][5]=samples[row].getAbsolutePath();
 		}
 
 		return data;

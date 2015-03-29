@@ -6,7 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +22,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static HashMap<String, ChoiseEmotion> status;
+//	private static HashMap<String, ChoiseEmotion> status;
 	
 	
 	private JFrame startFrame;
@@ -32,7 +32,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 	
 	
 	public EmpaticNAO(StartFrame startFrame) {
-		status = new HashMap<String, ChoiseEmotion>();
+//		status = new HashMap<String, ChoiseEmotion>();
 		this.startFrame=startFrame;
 		this.setTitle("NAO EMPATIC SOCIAL");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,12 +108,14 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			//emotion=BuildEmotion.getEmotion();
 			//System.out.println("Espressione Vocale Acquisita");
 		}
-		else if (e.getSource() == Gesture){//feature type 2
-			System.out.println("Scelta: Gesture");
+		else if (e.getSource() == Event){//feature type 2
+			ChoiseEmotion choiseEventEmo = null;
+			choiseEventEmo = new ChoiseEmotion(new JFrame(), emotion, (JButton)e.getSource(), 2);
+			System.out.println("Scelta: Event");
 			emotion=BuildEmotion.getEmotion();
 		}
-		else if (e.getSource() == Event){//feature type 3
-			System.out.println("Scelta: Event");
+		else if (e.getSource() == Gesture){//feature type 3
+			System.out.println("Scelta: Gesture");
 			emotion=BuildEmotion.getEmotion();
 		}
 		else if (e.getSource() == Back){
@@ -138,16 +140,16 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		}
 	}
 	
-	public static void upgradeStatus(String feature, ChoiseEmotion choiseFaceExpr, String operationStatus){
-		if(operationStatus.equals("put"))
-		{
-			status.put(feature, choiseFaceExpr);
-		}
-		else if (operationStatus.equals("del"))
-		{
-			status.remove(feature);
-		}
-			
-	}
+//	public static void upgradeStatus(String feature, ChoiseEmotion choiseFaceExpr, String operationStatus){
+//		if(operationStatus.equals("put"))
+//		{
+//			status.put(feature, choiseFaceExpr);
+//		}
+//		else if (operationStatus.equals("del"))
+//		{
+//			status.remove(feature);
+//		}
+//			
+//	}
 
 }

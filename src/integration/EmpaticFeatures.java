@@ -9,7 +9,7 @@ public  class EmpaticFeatures {
 
 	private FaceFeature face = null;
 	private AudioFeature audio = null;
-	private ActionFeature action = null;
+	private EventFeature event = null;
 	private GestureFeature gesture = null;
 	
 	
@@ -38,9 +38,10 @@ public  class EmpaticFeatures {
 	}
 
 
-	public void setActionFeature(ImageIcon actionImage, String path, String emotionCategory) {
-		action = new ActionFeature();
-		// TODO Auto-generated method stub
+	public void setEventFeature(String eventString, String emotionCategory) {
+		event = new EventFeature();
+		event.setEvent(eventString);
+		event.setEmotionCategory(emotionCategory);
 	}
 
 
@@ -57,8 +58,8 @@ public  class EmpaticFeatures {
 		audio=null;		
 	}
 
-	public void cleanAction() {
-		action=null;		
+	public void cleanEvent() {
+		event=null;		
 	}
 
 	public void cleanGesture() {
@@ -72,8 +73,8 @@ public  class EmpaticFeatures {
 	public AudioFeature getAudio(){
 		return audio;
 	}
-	public ActionFeature getAction(){
-		return action;
+	public EventFeature getEvent(){
+		return event;
 	}
 	public GestureFeature getGesture(){
 		return gesture;

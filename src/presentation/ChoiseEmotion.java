@@ -138,7 +138,7 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		}
 		else if (e.getSource() == confirm)
 		{
-			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
+//			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "put");
 			featureButton.setBackground(Color.YELLOW);
 			//setVisible(false);
 			//this.emotion=BuildEmotion.getEmotion();
@@ -147,7 +147,7 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		else if (e.getSource() == clean) 
 		{
 			featureClean();
-			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "del");
+//			EmpaticNAO.upgradeStatus(featureButton.getText().toLowerCase(), this, "del");
 			featureButton.setBackground(null);
 			dispose();
 		}
@@ -165,8 +165,8 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		case 1://AUDIO VOICE
 			BuildEmotion.cleanAudioFeature();
 			break;
-		case 2://ACTION 
-			BuildEmotion.cleanActionFeature();
+		case 2://Event 
+			BuildEmotion.cleanEventFeature();
 			break;
 		case 3://GESTURE
 			BuildEmotion.cleanGestureFeature();
@@ -185,7 +185,8 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		case 1://AUDIO VOICE
 			callAudioExpression(emotionCategory, source);
 			break;
-		case 2://ACTION 
+		case 2://Event
+			callEventExpression(emotionCategory,source);
 			break;
 		case 3://GESTURE
 			break;
@@ -193,6 +194,12 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		default:
 			break;
 		}
+		
+	}
+
+	private void callEventExpression(String emotionCategory, JButton source) {
+		@SuppressWarnings("unused")
+		EventChoice eventChoice = new EventChoice(new JFrame(), emotionCategory, source);
 		
 	}
 
@@ -235,8 +242,8 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 			}
 			break;
 		case 2:
-			if(status.getAction()!=null){
-				HighLight(status.getAction().getEmotionCategory());
+			if(status.getEvent()!=null){
+				HighLight(status.getEvent().getEmotionCategory());
 			}
 			break;
 		case 3:

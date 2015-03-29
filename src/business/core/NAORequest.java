@@ -57,7 +57,7 @@ public class NAORequest {
 					"facial_expression="+ emoAssociation.get(emotion.getFace().getEmotionCategory()) + "&"+
 					"audio_valence="+ emotion.getAudio().getValence() + "&"+
 					"audio_arousal="+ emotion.getAudio().getArousal() + "&"+
-					"event=happy";// + emoAssociation.get(emotion.getAction().getEmotionCategory());						 
+					"event="+ emoAssociation.get(emotion.getEvent().getEmotionCategory());// + emoAssociation.get(emotion.getAction().getEmotionCategory());						 
 	}
 
 }

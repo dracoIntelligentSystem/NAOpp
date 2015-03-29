@@ -37,7 +37,7 @@ class ImageSlider extends JDialog implements ActionListener
 	private String imgPath[];
 	private JLabel l, infoImg;
 	private JButton prev,next, confirm, back, SELECTION_FACETYPE;
-	private int i,size;
+	private int i,size,index;
 	private static int IMG_WIDTH=321;
 	private static int IMG_HEIGHT=470;
 	private JPanel Principal,slider,button;
@@ -48,6 +48,7 @@ class ImageSlider extends JDialog implements ActionListener
 	{
 		super(jframe);
 		this.SELECTION_FACETYPE=Selected;
+		this.setTitle("Face expression Slider");
 		immagini.put("test", new HashMap<File, ImageIcon>());
 		resizeImage(path+emo+"\\");
 		size=immagini.get("test").size();
@@ -128,17 +129,22 @@ class ImageSlider extends JDialog implements ActionListener
 
 		if(e.getSource()==prev)
 		{
-			i=(i-1) % size;
-			l.setIcon(img[i]);
-			infoImg.setText((imgPath[i].substring(imgPath[i].lastIndexOf("\\")+1)).split("\\.")[0]);
-			l.setIcon(img[i]);
+			i=i-1;
+			int ii=Math.abs(i);
+			int index=ii % size;
+			//System.out.println("i="+i+"       index:" + index);
+			l.setIcon(img[index]);
+			infoImg.setText((imgPath[index].substring(imgPath[index].lastIndexOf("\\")+1)).split("\\.")[0]);
+			l.setIcon(img[index]);
 		}
 		if(e.getSource()==next)
 		{	
-			i=(i+1)% size;
-			l.setIcon(img[i]);
-			infoImg.setText((imgPath[i].substring(imgPath[i].lastIndexOf("\\")+1)).split("\\.")[0]);
-			l.setIcon(img[i]);
+			i=i+1;
+			int iii=Math.abs(i);
+			int index1= iii% size;
+			l.setIcon(img[index]);
+			infoImg.setText((imgPath[index1].substring(imgPath[index1].lastIndexOf("\\")+1)).split("\\.")[0]);
+			l.setIcon(img[index1]);
 		}
 		if(e.getSource() == confirm){
 			ChoiseEmotion.refreshButton();

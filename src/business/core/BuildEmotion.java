@@ -27,8 +27,8 @@ public class BuildEmotion {
 		features.setAudioFeature(audio, path, emotionCategory, arousal, valence);
 	}
 
-	public static void setActionFeature(ImageIcon actionImage, String path, String emotionCategory){
-		features.setActionFeature(actionImage, path, emotionCategory);
+	public static void setEventFeature(String event, String emotionCategory){
+		features.setEventFeature(event, emotionCategory);
 	}
 
 	public static void setGestureFeature(ImageIcon gestureImage, String path, String emotionCategory){
@@ -47,8 +47,8 @@ public class BuildEmotion {
 		features.cleanAudio();
 	}
 
-	public static void cleanActionFeature(){
-		features.cleanAction();
+	public static void cleanEventFeature(){
+		features.cleanEvent();
 	}
 
 	public static void cleanGestureFeature(){
@@ -57,7 +57,7 @@ public class BuildEmotion {
 	
 	public static void cleanEmotion(){
 		if(features!=null){
-			cleanActionFeature();
+			cleanEventFeature();
 			cleanAudioFeature();
 			cleanFaceFeature();
 			cleanGestureFeature();

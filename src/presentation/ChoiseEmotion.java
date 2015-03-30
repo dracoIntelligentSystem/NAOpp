@@ -48,18 +48,31 @@ public class ChoiseEmotion extends JDialog implements ActionListener {
 		button = new JPanel(new FlowLayout());
 		
 		
-		disgusto = new JButton("DISGUSTO");disgusto.setName("disgust");
+//		disgusto = new JButton("DISGUSTO");disgusto.setName("disgust");
+//		disgusto.setEnabled(false);
+//		felicita = new JButton("FELICITA");felicita.setName("happy");
+//		miscele = new JButton("MISCELE");miscele.setName("mixtures");
+//		miscele.setEnabled(false);
+//		neutra = new JButton("NEUTRA");neutra.setName("neutral");
+//		paura = new JButton("PAURA");paura.setName("fear");
+//		paura.setEnabled(false);
+//		rabbia = new JButton("RABBIA");rabbia.setName("anger");
+//		sorpresa = new JButton("SORPRESA");sorpresa.setName("surprise");
+//		sorpresa.setEnabled(false);
+//		tristezza = new JButton("TRISTEZZA");tristezza.setName("sad"); 
+		disgusto = new JButton("DISGUST");disgusto.setName("disgust");
 		disgusto.setEnabled(false);
-		felicita = new JButton("FELICITA");felicita.setName("happy");
-		miscele = new JButton("MISCELE");miscele.setName("mixtures");
+		felicita = new JButton("HAPPYNESS");felicita.setName("happy");
+		miscele = new JButton("MIXTURES");miscele.setName("mixtures");
 		miscele.setEnabled(false);
-		neutra = new JButton("NEUTRA");neutra.setName("neutral");
-		paura = new JButton("PAURA");paura.setName("fear");
+		neutra = new JButton("NEUTRAL");neutra.setName("neutral");
+		paura = new JButton("FEAR");paura.setName("fear");
 		paura.setEnabled(false);
-		rabbia = new JButton("RABBIA");rabbia.setName("anger");
-		sorpresa = new JButton("SORPRESA");sorpresa.setName("surprise");
+		rabbia = new JButton("ANGER");rabbia.setName("anger");
+		sorpresa = new JButton("SURPRISE");sorpresa.setName("surprise");
 		sorpresa.setEnabled(false);
-		tristezza = new JButton("TRISTEZZA");tristezza.setName("sad"); 
+		tristezza = new JButton("SADNESS");tristezza.setName("sad"); 
+		
 		confirm = new JButton("CONFIRM"); 
 		back = new JButton("BACK");
 		clean = new JButton("CLEAN");

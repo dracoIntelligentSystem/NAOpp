@@ -12,8 +12,8 @@ public class CategorizationVoiceEmotion {
 	
 	public static void InitializeCategorizationVoiceEmotion() {
 		speechParam = new HashMap<String, ArrayList<Speech>>();
-		Speech anger = new Speech("medium", "veryneg");
-		Speech anger1 = new Speech("high", "veryneg");
+		Speech anger = new Speech("medium", "verynegative");
+		Speech anger1 = new Speech("high", "verynegative");
 		Speech anger2 = new Speech("medium", "negative");
 		Speech anger3 = new Speech("high", "negative");
 		ArrayList<Speech> angerList = new ArrayList<Speech>();
@@ -22,7 +22,7 @@ public class CategorizationVoiceEmotion {
 		angerList.add(anger2);
 		angerList.add(anger3);
 		
-		Speech sad = new Speech("low", "veryneg");
+		Speech sad = new Speech("low", "verynegative");
 		Speech sad1 = new Speech("low", "negative");
 		ArrayList<Speech> sadList = new ArrayList<Speech>();
 		sadList.add(sad);

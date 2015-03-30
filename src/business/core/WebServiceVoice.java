@@ -14,34 +14,38 @@ import org.ksoap2.transport.HttpTransportSE;
 
 
 public class WebServiceVoice {
-	private String NAMESPACE = "http://android";
-	private String SOAP_ACTION = "http://android/uploadFile";
+	private static String NAMESPACE = "http://android";
+	private static String SOAP_ACTION = "http://android/uploadFile";
 	// NAMESPACE + method name
 	@SuppressWarnings("unused")
-	private String ip ="193.204.187.73:81";
-	private String localhost="127.0.0.1:8080";
-	final String URL = "http://"+localhost+"/VOCEWebService/services/Android";
+	private static  String ip ="193.204.187.73:81";
+	@SuppressWarnings("unused")
+	private static  String localhost="127.0.0.1:8080";
+	final static  String URL = "http://"+ip+"/VOCEWebService/services/Android";
 
-	private String METHOD_NAME = "uploadFile";
-	private String METHOD_NAME2 = "getArousal";
-	private String SOAP_ACTION2 = "http://android/getArousal";
-	private String METHOD_NAME3 = "getValence";
-	private String SOAP_ACTION3 = "http://android/getValence";
-	private String METHOD_NAME4 = "getEmotion";
-	private String SOAP_ACTION4 = "http://android/getEmotion";
-	private String METHOD_NAME5 = "writeResult";
-	private String SOAP_ACTION5 = "http://android/writeResult";
-	private String METHOD_NAME6 = "getResult";
-	private String SOAP_ACTION6 = "http://android/getResult";
+	private static String METHOD_NAME = "uploadFile";
+	private static  String METHOD_NAME2 = "getArousal";
+	private static  String SOAP_ACTION2 = "http://android/getArousal";
+	private static  String METHOD_NAME3 = "getValence";
+	private static  String SOAP_ACTION3 = "http://android/getValence";
+	private static  String METHOD_NAME4 = "getEmotion";
+	private static  String SOAP_ACTION4 = "http://android/getEmotion";
+	private static  String METHOD_NAME5 = "writeResult";
+	private static  String SOAP_ACTION5 = "http://android/writeResult";
+	private static  String METHOD_NAME6 = "getResult";
+	private static  String SOAP_ACTION6 = "http://android/getResult";
 
-	private String emotion = null,pathfilewav="C:\\Copy\\eclipse\\workspace\\WebPC\\a.wav";
+	private static  String emotion;//pathfilewav="C:\\Copy\\eclipse\\workspace\\WebPC\\a.wav";
+	private static String arousal;
+	private static String valence;
+	private static File source_for_byte;
 	
 	public WebServiceVoice() {
 		
 	}
 
 	@SuppressWarnings("resource")
-	public static byte[] getBytesFromFile(File file) throws IOException {
+	private static byte[] getBytesFromFile(File file) throws IOException {
 		InputStream is = new FileInputStream(file);
 
 		// Get the size of the file
@@ -77,13 +81,13 @@ public class WebServiceVoice {
 	}
 
 
-	public void get3() throws IOException{
+	private static void get3(String pathfilewav) throws IOException{
 
-		File source_for_byte=new File(pathfilewav);
+		source_for_byte=new File(pathfilewav);
 		byte[] temp = new byte[(int) source_for_byte.length()];
 		temp=getBytesFromFile(source_for_byte);
 		//MODIFICARE L'ARRAY
-		String fileName=pathfilewav.split("\\")[pathfilewav.split("\\").length-1];
+		String fileName=pathfilewav.split("\\\\")[pathfilewav.split("\\\\").length-1];
 
 		try {
 			SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);//uploadFile
@@ -118,7 +122,8 @@ public class WebServiceVoice {
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 			androidHttpTransport.call(SOAP_ACTION2, envelope);
 			String result = (String) envelope.getResponse();
-			System.out.println("Arousal:   "+ result);
+			arousal=result;
+			//System.out.println("Arousal:   "+ result);
 
 		} catch (Exception E) {
 			E.printStackTrace();
@@ -140,7 +145,8 @@ public class WebServiceVoice {
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 			androidHttpTransport.call(SOAP_ACTION3, envelope);
 			String result = (String) envelope.getResponse();
-			System.out.println("Valence:   "+ result);
+			valence=result;
+			//System.out.println("Valence:   "+ result);
 
 		} catch (Exception E) {
 			E.printStackTrace();
@@ -160,7 +166,7 @@ public class WebServiceVoice {
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 			androidHttpTransport.call(SOAP_ACTION4, envelope);
 			emotion = (String) envelope.getResponse();
-			System.out.println("Emotion:   "+ emotion);
+			//System.out.println("Emotion:   "+ emotion);
 
 		} catch (Exception E) {
 			E.printStackTrace();
@@ -184,7 +190,7 @@ public class WebServiceVoice {
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 			androidHttpTransport.call(SOAP_ACTION5, envelope);
 			String result = (String) envelope.getResponse();
-			System.out.println(result);
+			//System.out.println(result);
 
 		} catch (Exception E) {
 			E.printStackTrace();
@@ -229,9 +235,33 @@ public class WebServiceVoice {
 			System.out.println("ERROR:" + E.getClass().getName() + ":" + E.getMessage());
 		}
 
-
+	}
+	
+	public static String getArousal(){
+		return arousal;
+	}
+	
+	public static String getValence(){
+		return valence;
+	}
+	
+	public static File getWav(){
+		return source_for_byte;
+	}
+	
+	public static void Initialize(String pathfile){
+		try {
+			get3(pathfile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
+	public static String getEmotion(){
+		return emotion;
+	}
+	
 	//	public static void main(String[] args) throws IOException{
 	//		
 	//		Pc a=new Pc();

@@ -20,7 +20,7 @@ public class CategorizationEvent {
 		sadList.add("La mia ragazza mi ha lasciato");
 		sadList.add("Il dentista mi ha prosciugato il portafogli");
 		sadList.add("Ho perso il lavoro");
-		sadList.add("Ho person un'acconto");
+		sadList.add("Ho perso un acconto");
 		eventEx.put("tristezza", sadList);
 		
 		Vector<String> neutralList = new Vector<>();

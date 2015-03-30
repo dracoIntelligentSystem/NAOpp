@@ -15,8 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
+import business.core.BuildEmotion;
 //import business.core.JavaSoundRecorder;
 import business.core.SimpleSoundCapture;
+import business.core.WebServiceVoice;
 
 public class VoiceRecorder extends JDialog implements ActionListener {
 
@@ -86,14 +90,22 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == confirm){
 			System.out.println(ssc.getVoiceRec().getAbsolutePath());
+			WebServiceVoice.Initialize(ssc.getVoiceRec().getAbsolutePath());
+			BuildEmotion.setAudioFeature(WebServiceVoice.getWav(), 
+					ssc.getVoiceRec().getAbsolutePath(), 
+					WebServiceVoice.getEmotion().toLowerCase(),
+					WebServiceVoice.getArousal().toLowerCase(), 
+					WebServiceVoice.getValence().toLowerCase());
+			System.out.println(ssc.getVoiceRec().getAbsolutePath());
 			//TO-DO REQUEST FOR TO GET AROUSAL AND VALENCE FROM WEBSERVICE
 			/*
 			 * String arousal = TOMCAT(FILE);
 			 * String valence = TOMCAT(FILE);
 			 * BuildEmotion.setAudioFeature(arousal,valence);
 			 */
-			dispose();
 			source.setBackground(Color.yellow);
+			dispose();
+			
 		}
 		else if (e.getSource() == back){
 			dispose();

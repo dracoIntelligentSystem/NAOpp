@@ -38,7 +38,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal= new JPanel(new GridLayout(5, 1));
 		buttonPanel = new JPanel(new FlowLayout());
-		Images = new JButton("Images", new ImageIcon("icon\\male-user-icon-clip-art.jpg"));
+		Images = new JButton("Faces", new ImageIcon("icon\\male-user-icon-clip-art.jpg"));
 		Images.addActionListener(this);
 		Audio = new JButton("Audio", new ImageIcon("icon\\voice_icon.jpg"));
 		Audio.addActionListener(this);

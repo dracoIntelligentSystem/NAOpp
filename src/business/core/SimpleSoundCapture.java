@@ -3,11 +3,13 @@ package business.core;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -17,7 +19,9 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -39,16 +43,21 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
     double duration, seconds;
     boolean captured=false;
     String pathfile;
+    JLabel statusRec;
+    BufferedImage img1;
  
     //File file;
  
-    public SimpleSoundCapture() {
+    public SimpleSoundCapture(JLabel statusRec) throws IOException {
         setLayout(new BorderLayout());
         @SuppressWarnings("unused")
 		EmptyBorder eb = new EmptyBorder(5, 5, 5, 5);
         SoftBevelBorder sbb = new SoftBevelBorder(SoftBevelBorder.LOWERED);
         setBorder(new EmptyBorder(5, 5, 5, 5));
- 
+        this.statusRec=statusRec;
+        statusRec.setBackground(null);
+        img1=ImageIO.read(new File("icon\\rec.gif"));
+        statusRec.setIcon(new ImageIcon(img1));
         JPanel p1 = new JPanel();
         p1.setLayout(new BoxLayout(p1, BoxLayout.X_AXIS));
  
@@ -90,6 +99,7 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
         Object obj = e.getSource();
         if (obj.equals(playB)) {
             if (playB.getText().startsWith("Play")) {
+            	statusRec.setIcon(new ImageIcon("icon\\play.gif"));//
                 playback.start();
                 captB.setEnabled(false);
                 playB.setText("Stop");
@@ -100,10 +110,13 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
             }
         } else if (obj.equals(captB)) {
             if (captB.getText().startsWith("Record")) {
+            	statusRec.setIcon(new ImageIcon("icon\\rec.gif"));
+            	validate();
                 capture.start();
                 playB.setEnabled(false);
                 captB.setText("Stop");
             } else if (captB.getText().startsWith("Stop")){
+            	statusRec.setIcon(new ImageIcon(img1));
                 capture.stop();
                 playB.setEnabled(true);
                 captB.setText("Record");

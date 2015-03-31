@@ -17,7 +17,7 @@ public class WebServiceVoice {
 	private static String NAMESPACE = "http://android";
 	private static String SOAP_ACTION = "http://android/uploadFile";
 	// NAMESPACE + method name
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static  String ip ="193.204.187.73:81";
 	@SuppressWarnings("unused")
 	private static  String localhost="127.0.0.1:8080";
@@ -189,6 +189,7 @@ public class WebServiceVoice {
 			envelope.setOutputSoapObject(request);
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 			androidHttpTransport.call(SOAP_ACTION5, envelope);
+			@SuppressWarnings("unused")
 			String result = (String) envelope.getResponse();
 			//System.out.println(result);
 

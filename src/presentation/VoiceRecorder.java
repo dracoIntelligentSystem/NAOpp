@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 
 
@@ -47,7 +49,14 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 		setTitle("Voice/audio recordeer");
 		setModal(true);
 		//recorder = new JavaSoundRecorder("recordVoice//");
-        ssc = new SimpleSoundCapture();
+		time=new JLabel();
+		//time.setFont(new Font("Serif", Font.BOLD, 36));
+        try {
+			ssc = new SimpleSoundCapture(time);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         ssc.open();
 		
 		principal=new JPanel();
@@ -56,8 +65,7 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 		console= new JPanel(new FlowLayout());		
 		buttons=new JPanel(new FlowLayout());
 		
-		time=new JLabel("00:00");
-		time.setFont(new Font("Serif", Font.BOLD, 36));
+		
 		
 		timer.add(time);
 		

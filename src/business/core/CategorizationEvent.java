@@ -10,31 +10,31 @@ public class CategorizationEvent {
 	private static void InitializeCategorizationEvent() {
 		eventEx = new HashMap<String, Vector<String>>();
 		Vector<String> angerList = new Vector<>();
-		angerList.add("Bocciato all'esame di Interfacce Intelligenti");
-		angerList.add("Ho bruciato il motore della macchina");
-		angerList.add("Ho perso il worksapce di eclipse perchè mi si è fritto l'HD");
-		angerList.add("Marco mi fa incazzare di Suo!!XD");
+		angerList.add("Failed exam of Intelligent Interfaces");
+		angerList.add("I burned the car engine");
+		angerList.add("I've lost my eclipse workspace beacuse my HD burnt");
+		angerList.add("Marco pisses me off, regardless !!XD");
 		eventEx.put("rabbia", angerList);
 		
 		Vector<String> sadList = new Vector<>();
-		sadList.add("La mia ragazza mi ha lasciato");
-		sadList.add("Il dentista mi ha prosciugato il portafogli");
-		sadList.add("Ho perso il lavoro");
-		sadList.add("Ho perso un acconto");
+		sadList.add("My girlfriend left me");
+		sadList.add("The dentist I emptied my wallet");
+		sadList.add("I lost my job");
+		sadList.add("I lost the deposit of catering");
 		eventEx.put("tristezza", sadList);
 		
 		Vector<String> neutralList = new Vector<>();
-		neutralList.add("Ho votato Mattarella");
-		neutralList.add("Sono apatico");
-		neutralList.add("Ho acceso il PC");
+		neutralList.add("I voted for Mattarella");
+		neutralList.add("I'm apathetic");
+		neutralList.add("I turned on the PC");
 		neutralList.add("PH 7");
 		eventEx.put("neutra", neutralList);
 		
 		Vector<String> happyList = new Vector<>();
-		happyList.add("Ho trovato 100 euro per terra");
-		happyList.add("Il mio cane ha figliato");
-		happyList.add("Ho vinto alla lotteria");
-		happyList.add("Ho visto Bianca");
+		happyList.add("I found 100 euro in the street");
+		happyList.add("My dog has kidded");
+		happyList.add("Sasha Grey is coming in my lab");
+		happyList.add("Ho visto Bianca!! I can't translate this!!");
 		eventEx.put("felicita", happyList);
 	}
 	

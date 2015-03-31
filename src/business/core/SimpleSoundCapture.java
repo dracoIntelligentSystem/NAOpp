@@ -151,6 +151,7 @@ public class SimpleSoundCapture extends JPanel implements ActionListener {
             }
             if (thread != null) {
                 thread = null;
+                statusRec.setIcon(new ImageIcon(img1));
                 captB.setEnabled(true);
                 playB.setText("Play");
             }

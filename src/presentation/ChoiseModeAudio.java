@@ -24,6 +24,7 @@ public class ChoiseModeAudio extends JDialog implements ActionListener{
 
 	public ChoiseModeAudio(JFrame jFrame) {
 		super(jFrame);
+		setTitle("Select Voice MODE");
 		setModal(true);
 		SelectVoice=new JButton("Select track", new ImageIcon("icon\\clicked.png"));
 		recordVoice= new JButton("Record track", new ImageIcon("icon\\mic.jpg"));

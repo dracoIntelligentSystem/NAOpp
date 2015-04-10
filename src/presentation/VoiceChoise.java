@@ -51,7 +51,7 @@ public class VoiceChoise extends JDialog implements ActionListener {
 		this.SELECTION_VOICETYPE=source;
 		this.Emo=Emo;
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Choise Voice Track");
+		setTitle("Choice Voice Track");
 		//etichetta = new JLabel("Testo su evento tabella");
 		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Valence","Arousal","Format","Path"};
 //TEST	//		columnNames=new String[] {"#Voice","Name","Emotion","Duration (s)","Format","Path"};

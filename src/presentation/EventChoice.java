@@ -31,11 +31,11 @@ public class EventChoice extends JDialog implements ActionListener {
 		super(jFrame);
 		this.emo=emotionCategory;
 		this.source=source;
-		setTitle("Choise appropriate Event");
+		setTitle("Choice appropriate Event");
 		setModal(true);
 		Principal = new JPanel(new GridLayout(2, 1));
 		event = new JPanel(new FlowLayout());
-		JLabel label = new JLabel("Choise an event:");
+		JLabel label = new JLabel("Choice an event:");
 		eventExamples = new JComboBox<String>(CategorizationEvent.getSamples(emotionCategory));
 		event.add(label);event.add(eventExamples);
 		Principal.add(event);

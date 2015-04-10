@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-public class NAORequest {
+public class NAORequest_notUsed {
 	private final static String address_url = "http://bdii.cloudapp.net/NAO_services/Emotions?";
 	private static String operation="upload";
 	private static HashMap<String, String> emoAssociation = new HashMap<String, String>();
@@ -53,43 +53,11 @@ public class NAORequest {
 	}
 
 	private static String buildParameterString(EmpaticFeatures emotion) {
-		
-		String separator="&";
-		String query="operation="+operation + separator;
-		
-		query=query+"facial_expression=";
-		try{
-			query=query+emoAssociation.get(emotion.getFace().getEmotionCategory())+separator;
-		} catch (NullPointerException e){
-			query=query+"null"+separator;
-		}
-		
-		query=query+"audio_valence="+separator;
-		try{
-			query=query+emotion.getAudio().getValence()+separator;
-		}catch (NullPointerException e){
-			query=query+"null"+separator;
-		}
-		
-		query=query+"audio_arousal="+separator;
-		try{
-			query=query+emotion.getAudio().getArousal()+separator;
-		}catch (NullPointerException e){
-			query=query+"null"+separator;
-		}
-		
-		query=query+"event="+separator;
-		try{
-			query=query+ emoAssociation.get(emotion.getEvent().getEmotionCategory());
-		}catch (NullPointerException e){
-			query=query+"null";
-		}
-		return query;
-//		return "operation="+operation + "&"+
-//					"facial_expression="+ emoAssociation.get(emotion.getFace().getEmotionCategory()) + "&"+
-//					"audio_valence="+ emotion.getAudio().getValence() + "&"+
-//					"audio_arousal="+ emotion.getAudio().getArousal() + "&"+
-//					"event="+ emoAssociation.get(emotion.getEvent().getEmotionCategory());// + emoAssociation.get(emotion.getAction().getEmotionCategory());						 
+		return "operation="+operation + "&"+
+					"facial_expression="+ emoAssociation.get(emotion.getFace().getEmotionCategory()) + "&"+
+					"audio_valence="+ emotion.getAudio().getValence() + "&"+
+					"audio_arousal="+ emotion.getAudio().getArousal() + "&"+
+					"event="+ emoAssociation.get(emotion.getEvent().getEmotionCategory());// + emoAssociation.get(emotion.getAction().getEmotionCategory());						 
 	}
 
 }

@@ -101,6 +101,8 @@ public class VoiceRecorder extends JDialog implements ActionListener {
 					WebServiceVoice.getArousal().toLowerCase(), 
 					WebServiceVoice.getValence().toLowerCase());
 			System.out.println(ssc.getVoiceRec().getAbsolutePath());
+			System.out.println("Arousal from service: "+WebServiceVoice.getArousal().toLowerCase()); 
+			System.out.println("Arousal from service: "+WebServiceVoice.getValence().toLowerCase());
 			//TO-DO REQUEST FOR TO GET AROUSAL AND VALENCE FROM WEBSERVICE
 			/*
 			 * String arousal = TOMCAT(FILE);

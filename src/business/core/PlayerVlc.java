@@ -28,7 +28,7 @@ public class PlayerVlc extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private EmbeddedMediaPlayerComponent ourMediaPlayer;
 	public PlayerVlc(){
-		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:\\Programmi\\VideoLAN\\VLC");
+		NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:\\VideoLAN\\VLC");
 		Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
 
 		ourMediaPlayer = new EmbeddedMediaPlayerComponent();

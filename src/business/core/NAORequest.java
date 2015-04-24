@@ -64,21 +64,21 @@ public class NAORequest {
 			query=query+"null"+separator;
 		}
 		
-		query=query+"audio_valence="+separator;
+		query=query+"audio_valence=";
 		try{
 			query=query+emotion.getAudio().getValence()+separator;
 		}catch (NullPointerException e){
 			query=query+"null"+separator;
 		}
 		
-		query=query+"audio_arousal="+separator;
+		query=query+"audio_arousal=";
 		try{
 			query=query+emotion.getAudio().getArousal()+separator;
 		}catch (NullPointerException e){
 			query=query+"null"+separator;
 		}
 		
-		query=query+"event="+separator;
+		query=query+"event=";
 		try{
 			query=query+ emoAssociation.get(emotion.getEvent().getEmotionCategory());
 		}catch (NullPointerException e){

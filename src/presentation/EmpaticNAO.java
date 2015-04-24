@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import business.core.BuildEmotion;
@@ -48,7 +49,7 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 		Event.addActionListener(this);
 		Back = new JButton("Back");
 		Back.addActionListener(this);
-		Confirm = new JButton("Confirm");
+		Confirm = new JButton("Send");
 		Confirm.addActionListener(this);
 		clean = new JButton("Clean");
 		clean.addActionListener(this);
@@ -128,7 +129,13 @@ public class EmpaticNAO extends JFrame implements ActionListener {
 			//System.out.println("Face: " + emotion.getFace().getEmotionCategory());
 			//System.out.println("Audio: " + emotion.getAudio().getEmotionCategory());
 			//System.out.println(NAORequest.send2NAO(BuildEmotion.getEmotion()));
-			NAORequest.send2NAO(BuildEmotion.getEmotion());			
+			int reply = JOptionPane.showConfirmDialog(null, "Are you sure to confirm this Features?", "Confirm Panel", JOptionPane.YES_NO_OPTION);
+	        if (reply == JOptionPane.YES_OPTION) {
+	        	NAORequest.send2NAO(BuildEmotion.getEmotion());	
+	        }
+	        else {
+//	           JOptionPane.showMessageDialog(null, "");
+	        }		
 		}
 		else if (e.getSource() == clean){
 			BuildEmotion.cleanEmotion();
